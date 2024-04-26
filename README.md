@@ -1,6 +1,6 @@
 # CSE3044SoftEngineering
 
-Haluk Hocanin projesi....
+Haluk Hocanin projesi
 
 # linkk for rsd:
 

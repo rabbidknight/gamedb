@@ -1,7 +1,6 @@
 package com.gamedb.fullstack.backend.controller;
-
+import com.gamedb.fullstack.backend.service.UserService;
 import com.gamedb.fullstack.backend.model.User;
-import com.gamedb.fullstack.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,15 +13,15 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @PostMapping("/user")
-    User newUser(@RequestBody User newUser){
-        return userRepository.save(newUser);
+    String newUser(@RequestBody User newUser){
+        return userService.saveStudent(newUser);
     }
 
     @GetMapping("/users")
-    List<User> getAllUsers(){
-        return userRepository.findAll();
+    List<User> allUserList(){
+        return userService.getAllUsers();
     }
 }

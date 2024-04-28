@@ -1,7 +1,7 @@
-package com.gameDB.gamedatabase.controller;
+package com.gamedb.fullstack.backend.controller;
 
-import com.gameDB.gamedatabase.service.GameService;
-import com.gameDB.gamedatabase.model.Game;
+import com.gamedb.fullstack.backend.service.GameService;
+import com.gamedb.fullstack.backend.model.Game;
 
 import java.util.List;
 

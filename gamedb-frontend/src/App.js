@@ -3,18 +3,26 @@ import './App.css';
 const  App = () => {
   return (
     <>
-      <div>
-       <h1 className="Title">GameDB</h1>
-      </div>
-
-      
+      <Navbar/>
+      <div className = "SignInButtonDiv">
       <button className = "SignInButton">
         Sign In
       </button>
+      </div>
+    </>
+
+  );
+}
+export default App;
+
+const  Navbar = () => {
+  return (
+    <>
+      <div  className = "Navbar">
+        <p className = "Title">GameDB</p>
+      </div>
       
     </>
 
   );
 }
-
-export default App;

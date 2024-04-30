@@ -1,10 +1,20 @@
 import './App.css';
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
 
 const  App = () => {
   const [SignIn, setSignIn] = useState(0);
+  const [users, setUsers] = useState([]);
   
+  useEffect(()=> {  // when page is loading this is executed
+    loadUsers();
+  },[]);
+
+  const loadUsers = async()=> {
+    const result = await axios.get("http://localhost:8080/users");
+    setUsers(result.data);
+  }
+
   return (
     <>
       <Navbar/>
@@ -19,12 +29,12 @@ const  App = () => {
       (<>
       <div class="form__group">
       <input type="input" class="form__field" placeholder="Name" required=""/>
-      <label for="name" class="form__label">UserName</label>
+      <label class="form__label">UserName</label>
       </div>
 
       <div class="form__group">
       <input type="input" class="form__field" placeholder="Name" required=""/>
-      <label for="name" class="form__label">Password</label>
+      <label class="form__label">Password</label>
       </div>
       </>)
       
@@ -33,11 +43,30 @@ const  App = () => {
       </>
       )
       }  
+
+      <table>
+      <th>Index</th>
+      <th>Name</th>
+      <th>UserName</th>
+      <th>Email</th>
+      {
+      users.map((user,index)=>(
+      <tr>
+      <th scope="row" key={index}>{index+1}</th>
+      <td>{user.name}</td>
+      <td>{user.username}</td>
+      <td>{user.email}</td>
+      </tr>
+      ))
+    }
+    </table>
+
     </>
 
   );
 }
 export default App;
+
 
 const  Navbar = () => {
   return (
@@ -47,6 +76,5 @@ const  Navbar = () => {
       </div>
       
     </>
-
   );
 }

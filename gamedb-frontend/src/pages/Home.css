@@ -15,6 +15,7 @@
     background-color: #0ebe6c;
     height: 80px;
     margin-top: 0px;
+    margin-bottom: 40px;
     font-size: 28px;
   }
   
@@ -124,6 +125,8 @@
   table { /*deneme tablosu*/
     margin-left: auto;
     margin-right: auto;
+    margin-top: 75px;
+    
   }
   
   td {

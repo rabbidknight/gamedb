@@ -1,10 +1,16 @@
 import './App.css';
 import Home from './pages/Home';
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AddUser from './users/AddUser';
 
 export default function App() {
   return (
-    <Home/>
+    <Router>
+      <Routes>
+        <Route exact path='/' element={<Home/>}/>
+        <Route exact path='/register' element={<AddUser/>}/>
+      </Routes>
+    </Router>
   );
 }
 

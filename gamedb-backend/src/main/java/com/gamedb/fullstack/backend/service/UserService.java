@@ -3,7 +3,7 @@ package com.gamedb.fullstack.backend.service;
 
 import java.util.List;
 
-import com.gamedb.fullstack.backend.model.User;
+import com.gamedb.fullstack.backend.repository.model.User;
 
 
 public interface UserService {

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.gamedb.fullstack.backend.model.Game;
 import  com.gamedb.fullstack.backend.repository.GameRepository;
+import com.gamedb.fullstack.backend.repository.model.Game;
 
 @Service
 public class GameServiceImpl implements GameService {

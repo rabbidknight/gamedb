@@ -1,6 +1,7 @@
 package com.gamedb.fullstack.backend.controller;
+import com.gamedb.fullstack.backend.repository.model.User;
 import com.gamedb.fullstack.backend.service.UserService;
-import com.gamedb.fullstack.backend.model.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

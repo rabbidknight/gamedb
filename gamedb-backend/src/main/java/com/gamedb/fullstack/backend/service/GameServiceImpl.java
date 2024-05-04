@@ -19,4 +19,9 @@ public class GameServiceImpl implements GameService {
         return gameRepository.findAll();
     }
 
+    @Override
+    public List<Game> get20GamesByNameOrder() {
+        return gameRepository.find20GamesByNameOrder();
+    }
+
 }

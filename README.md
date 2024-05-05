@@ -1,10 +1,14 @@
 # CSE3044SoftEngineering
 
-Haluk Hocanin projesi.
+borahan Hocanin projesi.
 
-# linkk for rsd:
-
+# rsd:
 https://marmaraedutr-my.sharepoint.com/:w:/g/personal/boraduman_marun_edu_tr/Eeos3qw_jbZNsDlcymlMJ-MBkDlrVGELmplZaQYYuv92zw?e=e9p1xM
+
+#dsd:
+https://marmaraedutr-my.sharepoint.com/:w:/g/personal/boraduman_marun_edu_tr/EYzTpFZc4opNplAB6INFKfYB5doOr9KnwWVGXQvZR9hX7g?e=R9iuKP
+
+
 
 # Class Diagram:
 

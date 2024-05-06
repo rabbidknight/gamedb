@@ -2,7 +2,7 @@ package com.gamedb.fullstack.backend.service;
 
 import java.util.List;
 
-import com.gamedb.fullstack.backend.repository.model.Game;
+import com.gamedb.fullstack.backend.model.Game;
 
 public interface GameService {
     public List<Game> getAllGames();

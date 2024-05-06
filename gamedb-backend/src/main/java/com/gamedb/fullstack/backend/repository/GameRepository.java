@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.stereotype.Repository;
 
-import com.gamedb.fullstack.backend.repository.model.Game;
+import com.gamedb.fullstack.backend.model.Game;
 
 @Repository
 public interface GameRepository extends JpaRepository<Game, Integer>{

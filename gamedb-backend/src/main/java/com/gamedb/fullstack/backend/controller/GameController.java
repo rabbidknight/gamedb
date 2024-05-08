@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@RequestMapping("/games")
+@RequestMapping("/main")
 public class GameController {
     @Autowired
     private GameService gameService;

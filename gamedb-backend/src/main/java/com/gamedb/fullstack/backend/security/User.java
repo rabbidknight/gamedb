@@ -26,7 +26,7 @@ public class User implements UserDetails    {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
     private String username;
     private String email;
     private String password;
@@ -34,7 +34,7 @@ public class User implements UserDetails    {
     private Role role;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return role.getAuthorities();
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
     @Override
     public boolean isAccountNonExpired() {

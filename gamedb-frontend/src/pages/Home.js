@@ -14,7 +14,7 @@ export default function Home() {
 
     <div className = "SignInButtonDiv">
       <Link to="/register"><button onClick={() => setSignIn(1)} className = "SignInButton">
-        Sign In 2
+        Sign In
       </button></Link>
       </div>
 

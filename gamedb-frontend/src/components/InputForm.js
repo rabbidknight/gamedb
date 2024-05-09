@@ -1,11 +1,14 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Home from '../pages/Home'
+
+
 
 export default function InputForm() {
 
   let navigate = useNavigate()
-  
+
   const [user, setUser] = useState({
     name:"",
     username:"",
@@ -27,6 +30,7 @@ export default function InputForm() {
   return (
     <form onSubmit={(e)=>onSubmit(e)}>
       <div>
+      <div className='InnerFormDiv'>
         <div class="form__group">
         <input type="input" class="form__field" placeholder="Name" required 
         name="name" value={name} onChange={(e)=>onInputChange(e)}/>
@@ -45,6 +49,7 @@ export default function InputForm() {
         <label class="form__label">Email</label>
         </div>
       </div>
+      </div>
       
       <div className = "ButtonDiv">
       <input type='submit' className='SubmitButton' 
@@ -58,3 +63,5 @@ export default function InputForm() {
 
   )
 }
+
+

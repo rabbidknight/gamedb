@@ -3,29 +3,49 @@
     color: #000;
     border: 2px solid black;
     border-radius: 20px;
-    background-color: #55dfa8;
+    background-color: #d8e0dd;
     width: 140px;
     height: 40px;
     text-align: center;
     margin: auto;
     font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(155, 151, 151, 0.1);
   }
+
+  .Background {
+    position: fixed;
+    width: 1900px;
+    z-index: -1;
+    filter: blur(25px);
+    scale: 110%;
+  }
+
   .Navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
     display: flex;
-    background-color: #0ebe6c;
+    align-items: center;
+    background-color: #222524;
     height: 80px;
     margin-top: 0px;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     font-size: 28px;
+    z-index: 5;
   }
   
+  .Main {
+    margin-top: 90px;
+  }
+
   .SignInButton {
-    width: 12%;
-    min-width: 150px;
-    margin-top: 30px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    margin-bottom: 40px;
+    position: absolute;
+    top: 18px;
+    right: 5px;
+    width: 8%;
+    min-width: 120px;
+    justify-content: flex-end;
+    height: 45px;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -34,7 +54,7 @@
     background-color: #fff;
     border: 2px;
     border-style: solid;
-    border-color: #23c483;
+    border-color: #000000;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
@@ -67,7 +87,7 @@
   }
 
   .CancelButton {
-    margin-left: 20px;
+    margin-left: 10px;
     width: 12%;
     min-width: 120px;
     max-width: 160px;
@@ -96,10 +116,9 @@
   }
   
   .SignInButton:hover {
-    background-color: #23c483;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.5);
+    background-color: #000302;
+    box-shadow: 0px 15px 20px rgba(20, 223, 105, 0.664);
     color: #fff;
-    transform: translateY(-7px);
   }
   
   .SignInButton:active {
@@ -131,6 +150,20 @@
     background-color: #eb1c1c;
   }
   
+  .InnerFormDiv {
+    margin: auto;
+    margin-top: 40px;
+    width: 240px;
+    height: 245px;
+    padding-top: 10px;
+    border: 2px solid;
+    border-color: #000;
+    border-radius: 40px;
+    box-shadow: 0px 15px 20px rgba(34, 37, 36, 0.6);
+    background-color: rgba(34, 37, 36, 0.8);
+  
+  }
+
   .form__group {
     position: relative;
     padding: 20px 0 0;
@@ -198,10 +231,13 @@
   }
   
   table { /*deneme tablosu*/
+    color: white;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    
+    margin-bottom: 30px;
+    background-color: rgba(34, 37, 36, 0.7);
+    border-radius: 20px;
   }
   
   td {

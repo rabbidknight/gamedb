@@ -1,22 +1,25 @@
 import React from 'react';
 import './Home.css';
-import Navbar from '../components/Navbar';
 import { Link } from 'react-router-dom';
+import backgroundImg from "../background.jpg"
+
 
 export default function Home() {
   return (
-  <>
-    <Navbar/>
-    <div className = "ButtonDiv">
-      <Link to="/register"><button  className = "SignInButton">
-        Sign In
+    <>
+    <div  className = "Navbar">
+      <Link className = "Title" to="/">GameDB</Link>
+      <Link to="/register"><button className = "SignInButton">
+      Sign In
       </button></Link>
-      </div>
-
+    </div>
+    <div>
+      <img className = "Background" src={backgroundImg}/>
+    </div>
+    
+    <div className='Main'>
       
-       
-
-      
+    </div>
 
     </>
   )

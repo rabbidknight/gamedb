@@ -32,7 +32,57 @@
     font-weight: 500;
     color: #000;
     background-color: #fff;
-    border: none;
+    border: 2px;
+    border-style: solid;
+    border-color: #23c483;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .SubmitButton {
+    width: 12%;
+    min-width: 120px;
+    max-width: 160px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: 2px;
+    border-style: solid;
+    border-color: #23c483;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .CancelButton {
+    margin-left: 20px;
+    width: 12%;
+    min-width: 120px;
+    max-width: 160px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: 2px solid;
+    border-color: #d82d2d;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
@@ -40,13 +90,14 @@
     outline: none;
   }
   
-  .SignInButtonDiv {
+  
+  .ButtonDiv {
     text-align: center;
   }
   
   .SignInButton:hover {
     background-color: #23c483;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.5);
     color: #fff;
     transform: translateY(-7px);
   }
@@ -54,6 +105,30 @@
   .SignInButton:active {
     transform: translateY(-1px);
     background-color: #20a771;
+  }
+
+  .SubmitButton:hover {
+    background-color: #23c483;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.5);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .SubmitButton:active {
+    transform: translateY(-1px);
+    background-color: #20a771;
+  }
+
+  .CancelButton:hover {
+    background-color: #d82d2d;
+    box-shadow: 0px 15px 20px rgba(165, 28, 28, 0.5);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+  
+  .CancelButton:active {
+    transform: translateY(-1px);
+    background-color: #eb1c1c;
   }
   
   .form__group {
@@ -125,7 +200,7 @@
   table { /*deneme tablosu*/
     margin-left: auto;
     margin-right: auto;
-    margin-top: 75px;
+    margin-top: 20px;
     
   }
   

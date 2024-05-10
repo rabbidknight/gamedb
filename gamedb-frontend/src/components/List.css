@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+
+ .container {
+	 width: 100%;
+	 display: flex;
+	 justify-content: center;
+	 height: 300px;
+	 gap: 10px;
+     margin-bottom: 30px;
+}
+ .container .outercontent {
+	 flex: 0 0 180px;
+	 border-radius: 0.5rem;
+	 transition: 0.5s ease-in-out;
+	 cursor: pointer;
+	 box-shadow: 1px 5px 15px #1e0e3e;
+	 position: relative;
+	 overflow: hidden;
+}
+ 
+ .container .outercontent .content {
+	 font-size: 1rem;
+	 color: #fff;
+	 display: flex;
+	 align-items: center;
+	 padding: 15px;
+	 opacity: 0;
+	 flex-direction: column;
+	 height: 100%;
+	 justify-content: flex-end;
+	 background: #02022e;
+	 background: linear-gradient(0deg, rgba(2, 2, 46, 0.6755077030812324) 0%, rgba(255, 255, 255, 0) 100%);
+	 transform: translatey(100%);
+	 transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+	 visibility: hidden;
+}
+ .container .outercontent .content span {
+	 display: block;
+	 margin-top: 5px;
+	 font-size: 1.2rem;
+}
+ .container .outercontent:hover {
+	 flex: 0 0 230px;
+	 box-shadow: 1px 3px 15px #7645d8;
+	 transform: translatey(-30px);
+}
+ .container .outercontent:hover .content {
+	 opacity: 1;
+	 transform: translatey(0%);
+	 visibility: visible;
+}
+ 

@@ -3,7 +3,7 @@ import './Home.css';
 import { Link } from 'react-router-dom';
 import backgroundImg from "../background.jpg"
 import List from '../components/List';
-import "../components/List.scss"
+import "../components/List.css"
 
 export default function Home() {
 /*
@@ -28,8 +28,12 @@ export default function Home() {
     <>
     <div  className = "Navbar">
       <Link className = "Title" to="/">GameDB</Link>
-      <Link to="/register"><button className = "SignInButton">
-      Sign In
+      <Link to="/SignUp"><button className = "SignUpButton">
+      Sign Up
+      </button></Link>
+
+      <Link to="/Login"><button className = "LoginButton">
+      Login
       </button></Link>
     </div>
     <div>
@@ -38,7 +42,9 @@ export default function Home() {
     
     
     <div className='Main'>
-      <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "20px"}} >Popular Games</h1>
+      <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "30px"}} >Popular Games</h1>
+      <List />
+      <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "30px"}} >Best Games</h1>
       <List />
       
 

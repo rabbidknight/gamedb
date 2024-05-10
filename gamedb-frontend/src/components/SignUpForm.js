@@ -25,7 +25,7 @@ export default function InputForm() {
   }
 
   return (
-    <form onSubmit={(e)=>onSubmit(e)}>
+    <form className="form" onSubmit={(e)=>onSubmit(e)}>
       <div>
         <div className='InnerFormDiv'>
           <div style={{textAlign: "center", fontSize: "24px"}}>

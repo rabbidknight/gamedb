@@ -25,7 +25,7 @@ export default function InputForm() {
 
   return (
     
-    <form onLogin={(e)=>onLogin(e)}>
+    <form className = "form" onLogin={(e)=>onLogin(e)}>
       <div>
         <div className='InnerFormDiv' style={{height: "280px"}}>
             <div style={{textAlign: "center", fontSize: "24px"}}>

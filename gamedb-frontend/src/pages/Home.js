@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useMemo , memo} from 'react';
+import React, { useEffect, useState} from 'react';
 import './Home.css';
 import { Link } from 'react-router-dom';
 import backgroundImg from "../background.jpg"
-import api from "../api/axiosConfig.js"
-import axios from 'axios';
-
+import List from '../components/List';
+import "../components/List.scss"
 
 export default function Home() {
 /*
@@ -24,18 +23,6 @@ export default function Home() {
     getGames();
   },[])
 */
-  const [users, setUsers] = useState([]);
-
-  useEffect(()=> {  // when page is loading this is executed
-  loadUsers();
-  },[]);
-
-  const loadUsers = async()=> {
-  const result = await axios.get("http://localhost:8080/users");
-  console.log(result.data)
-  setUsers(result.data);
-  }
-
 
   return (
     <>
@@ -51,9 +38,11 @@ export default function Home() {
     
     
     <div className='Main'>
+      <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "20px"}} >Popular Games</h1>
+      <List />
       
-    </div>
 
+    </div>
     </>
   )
 }

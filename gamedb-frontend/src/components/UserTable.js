@@ -16,7 +16,7 @@ export default function UserTable() {
     <table>
       <th>Index</th>
       <th>Name</th>
-      <th>UserName</th>
+      <th>Username</th>
       <th>Email</th>
       {
       users.map((user,index)=>(

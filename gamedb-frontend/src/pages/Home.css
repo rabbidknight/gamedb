@@ -1,32 +1,56 @@
 .Title {
-    text-decoration: none;
+     text-decoration: none;
     color: #000;
     border: 2px solid black;
     border-radius: 20px;
-    background-color: #55dfa8;
+    background-color: #f0f5f3;
     width: 140px;
     height: 40px;
     text-align: center;
     margin: auto;
     font-weight: bold;
+    box-shadow: 0px 8px 15px rgba(155, 151, 151, 0.1);
   }
+
+  .Background {
+    position: fixed;
+    width: 100%; 
+    height: 100%;
+    filter: blur(25px) brightness(70%);
+    z-index: -10;
+    scale: 110%;
+    top: 20px;
+    left: 0;
+  }
+
   .Navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
     display: flex;
-    background-color: #0ebe6c;
+    background-color: #222524;
     height: 80px;
     margin-top: 0px;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     font-size: 28px;
+    z-index: 5;
+    box-shadow: 0px 10px 50px rgba(174, 10, 224, 0.3);
+    border: 2px solid black;
   }
   
-  .SignInButton {
-    width: 12%;
-    min-width: 150px;
-    margin-top: 30px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    margin-bottom: 40px;
-    font-size: 12px;
+  .Main {
+    margin-top: 90px;
+    color: white;
+  }
+
+  .SignUpButton {
+    position: absolute;
+    top: 18px;
+    right: 10px;
+    width: 130px;
+    justify-content: flex-end;
+    height: 45px;
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 500;
@@ -34,7 +58,30 @@
     background-color: #fff;
     border: 2px;
     border-style: solid;
-    border-color: #23c483;
+    border-color: #000000;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .LoginButton {
+    position: absolute;
+    top: 18px;
+    right: 150px;
+    width: 130px;
+    justify-content: flex-end;
+    height: 45px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: 2px;
+    border-style: solid;
+    border-color: #000000;
     border-radius: 45px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease 0s;
@@ -67,7 +114,7 @@
   }
 
   .CancelButton {
-    margin-left: 20px;
+    margin-left: 10px;
     width: 12%;
     min-width: 120px;
     max-width: 160px;
@@ -95,14 +142,24 @@
     text-align: center;
   }
   
-  .SignInButton:hover {
-    background-color: #23c483;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.5);
+  .SignUpButton:hover {
+    background-color: #000302;
+    box-shadow: 0px 10px 10px rgba(11, 153, 219, 0.464);
     color: #fff;
-    transform: translateY(-7px);
   }
   
-  .SignInButton:active {
+  .SignUpButton:active {
+    transform: translateY(-1px);
+    background-color: #20a771;
+  }
+
+  .LoginButton:hover {
+    background-color: #000302;
+    box-shadow: 0px 10px 10px rgba(166, 9, 228, 0.464);
+    color: #fff;
+  }
+  
+  .LoginButton:active {
     transform: translateY(-1px);
     background-color: #20a771;
   }
@@ -131,6 +188,18 @@
     background-color: #eb1c1c;
   }
   
+  .InnerFormDiv {
+    margin: auto;
+    width: 270px;
+    height: 347px;
+    padding-top: 10px;
+    border: 2px solid;
+    border-color: #000;
+    border-radius: 40px;
+    box-shadow: 0px 15px 20px rgba(34, 37, 36, 0.6);
+    background-color: rgba(34, 37, 36, 0.8);
+  }
+
   .form__group {
     position: relative;
     padding: 20px 0 0;
@@ -148,7 +217,7 @@
     border-bottom: 2px solid #9b9b9b;
     outline: 0;
     font-size: 17px;
-    color: #000000;
+    color: #ffffff;
     padding: 7px 0;
     background: transparent;
     transition: border-color 0.2s;
@@ -198,15 +267,38 @@
   }
   
   table { /*deneme tablosu*/
+    color: white;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    
+    margin-bottom: 30px;
+    background-color: rgba(34, 37, 36, 0.7);
+    border-radius: 20px;
   }
   
   td {
     width: 250px;
     border:1px solid black;
   }
+
+  hr {
+    background-color: rgb(0, 0, 0);
+    margin-top: 10px;
+    height: 2px;
+    border: none
+  }
   
+  .SignInLink {
+    color: rgb(18, 154, 196);
+    
+  }
+  .LoginLink {
+    color: rgb(18, 154, 196);
+    
+  }
+
+  .form {
+    position: relative;
+    top: 40;
+  }
   

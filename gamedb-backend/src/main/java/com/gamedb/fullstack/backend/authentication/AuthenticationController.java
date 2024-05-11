@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.RequiredArgsConstructor;
 
 @RestController
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("api/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {

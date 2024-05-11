@@ -1,4 +1,4 @@
-
+// CAROUSEL
 export default function List() {
 
   const resim1 = "https://upload.wikimedia.org/wikipedia/tr/5/53/TheWitcher3-WildHunt.KapakResmi.png?20140605204232"
@@ -49,14 +49,14 @@ export default function List() {
   </div>
   <div class="outercontent">
     <div class="content">
-      <h2>Lisa Boley</h2>
-      <span>Marketing Coordinator</span>
+      <h2>...</h2>
+      <span>...</span>
     </div>
   </div>
   <div class="outercontent">
     <div class="content">
-      <h2>Jane Doe</h2>
-      <span>UI & UX Designer</span>
+      <h2>...</h2>
+      <span>...</span>
     </div>
   </div>
   

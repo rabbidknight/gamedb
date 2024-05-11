@@ -1,6 +1,7 @@
 package com.gamedb.fullstack.backend.config;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.gamedb.fullstack.backend.repository.UserRepository;
+import com.gamedb.fullstack.backend.security.User;
 
 import lombok.RequiredArgsConstructor;
 
@@ -29,10 +31,9 @@ public class ApplicationConfig {
         return new UserDetailsService() {
 
             @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-                return  userRepository.findByEmail(username).orElseThrow( () -> new UsernameNotFoundException("User not found"));
+            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {             
+                return  userRepository.getUserFromUsername(username);
             }
-            
         };
     }
 

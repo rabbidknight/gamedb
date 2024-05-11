@@ -14,19 +14,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@RequestMapping("/main")
+@RequestMapping("api/game")
 public class GameController {
     @Autowired
     private GameService gameService;
     
-    @GetMapping("/test")
+    @GetMapping("/main/test")
     public String testGet(){
         return "Test is successful";
     }
-    @GetMapping("/name")
+    @GetMapping("/main/name")
     public List<Game> getMethodName() {
         return gameService.get20GamesByNameOrder();
     }
-    
-    
 }

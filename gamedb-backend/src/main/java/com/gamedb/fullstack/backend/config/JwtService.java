@@ -20,13 +20,11 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-    private final long TOKEN_INVALID_TIME = 1000 * 60 * 24; // in miliseconds , currently 24 hours
+    private final long TOKEN_INVALID_TIME = 1000 * 60 * 60; // in miliseconds , currently 1 hour
     private static final String VERY_SECRET_VALUE = "49591454b16fcf4f0a5d52e71c5452271d8a710459969d3ad18f010960fc6644";
     public String extractUsername(String jwt) {
-        extractClaim(jwt, Claims::getSubject);
-
-
-        return null;
+        return extractClaim(jwt, Claims::getSubject);
+       
     }
 
 

@@ -63,21 +63,21 @@ axios.get('https://example.com/api/data', {
       {token ? ( // Token varsa
         <>
           <Link to="/">
-            <button className="MainButton1" onClick={handleLogout}>
-              Logout
+            <button className="MainButton1">
+              My List
             </button>
           </Link>
           <Link to="/">
-            <button className="MainButton2">My List</button>
+            <button className="MainButton2" onClick={handleLogout}>Logout</button>
           </Link>
         </>
       ) : (// Token yoksa
         <>
-          <Link to="/SignUp">
-            <button className="MainButton1">Sign Up</button>
-          </Link>
           <Link to="/Login">
-            <button className="MainButton2">Login</button>
+            <button className="MainButton1">Login</button>
+          </Link>
+          <Link to="/SignUp">
+            <button className="MainButton2">Sign Up</button>
           </Link>
         </>
       )}

@@ -28,7 +28,7 @@ export default function InputForm() {
    try {
     const response = await axios.post("http://localhost:8080/api/auth/register", user);
     setToken(response.data.token);
-    navigate("/");
+    setTimeout(function(){navigate("/");},50);
    } catch (error) {
     showErrorMessage();
    }
@@ -39,7 +39,7 @@ export default function InputForm() {
     var errorMessage = document.getElementById('errorMessage');
     errorMessage.style.display = 'block';
     var form = document.getElementById('form');
-    form.style.height = '370px';
+    form.style.height = '375px';
 }
 
   return (

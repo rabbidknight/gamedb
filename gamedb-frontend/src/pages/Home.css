@@ -3,7 +3,8 @@
     color: #000;
     border: 2px solid black;
     border-radius: 20px;
-    background-color: #f0f5f3;
+    background: linear-gradient(90deg, rgb(150, 54, 194), rgb(31, 130, 184));
+    color: black;
     width: 140px;
     height: 40px;
     text-align: center;
@@ -34,7 +35,7 @@
     margin-bottom: 0px;
     font-size: 28px;
     z-index: 5;
-    box-shadow: 0px 10px 50px rgba(174, 10, 224, 0.3);
+    box-shadow: 0px 10px 45px rgba(174, 10, 224, 0.3);
     border: 2px solid black;
   }
   
@@ -43,10 +44,10 @@
     color: white;
   }
 
-  .SignUpButton {
+  .MainButton1 {
     position: absolute;
     top: 18px;
-    right: 10px;
+    right: 20px;
     width: 130px;
     justify-content: flex-end;
     height: 45px;
@@ -66,10 +67,10 @@
     outline: none;
   }
 
-  .LoginButton {
+  .MainButton2 {
     position: absolute;
     top: 18px;
-    right: 150px;
+    right: 160px;
     width: 130px;
     justify-content: flex-end;
     height: 45px;
@@ -142,27 +143,18 @@
     text-align: center;
   }
   
-  .SignUpButton:hover {
+  .MainButton1:hover {
     background-color: #000302;
-    box-shadow: 0px 10px 10px rgba(11, 153, 219, 0.464);
+    box-shadow: 0px 10px 10px rgba(10, 135, 194, 0.527);
     color: #fff;
   }
-  
-  .SignUpButton:active {
-    transform: translateY(-1px);
-    background-color: #20a771;
-  }
 
-  .LoginButton:hover {
+  .MainButton2:hover {
     background-color: #000302;
     box-shadow: 0px 10px 10px rgba(166, 9, 228, 0.464);
     color: #fff;
   }
   
-  .LoginButton:active {
-    transform: translateY(-1px);
-    background-color: #20a771;
-  }
 
   .SubmitButton:hover {
     background-color: #23c483;
@@ -299,6 +291,6 @@
 
   .form {
     position: relative;
-    top: 40;
+    top: 40px;
   }
   

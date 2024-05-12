@@ -1,12 +1,13 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import useToken from '../variables/Token'
 
 
 
 export default function InputForm() {
 
-  const [Arda, setArda] = useState([])
+  const { token, setToken } = useToken();
 
   const [user, setUser] = useState({
     username:"",
@@ -22,18 +23,29 @@ export default function InputForm() {
 
   const onSubmit = async (e)=> {
    e.preventDefault();
-   const response = await axios.post("http://localhost:8080/api/auth/register", user);
-  setArda(response.data);
+   try {
+    const response = await axios.post("http://localhost:8080/api/auth/register", user);
+   setToken(response.data.token);
+   } catch (error) {
+    showErrorMessage();
+   }
    
-   //setTimeout(function(){window.location.reload();},30);
   }
+
+    function showErrorMessage() {
+    var errorMessage = document.getElementById('errorMessage');
+    errorMessage.style.display = 'block';
+    var form = document.getElementById('form');
+    form.style.height = '370px';
+}
 
   return (
     <form className="form" onSubmit={(e)=>onSubmit(e)}>
       <div>
-        <div className='InnerFormDiv'>
+        <div id='form' className='InnerFormDiv'>
           <div style={{textAlign: "center", fontSize: "24px"}}>
-            Sign Up
+            <span>Sign Up</span>
+            <br></br><span id="errorMessage" style={{color: "rgb(212, 33, 78)", fontWeight: "bold", fontSize: "15px", display: "none", marginTop: "10px" }}>Something went wrong</span>
             <hr></hr>
             </div>
           <div className="form__group">
@@ -68,7 +80,6 @@ export default function InputForm() {
         Cancel
       </button></Link>
       </div>
-      {Arda.token}
     </form>
 
   )

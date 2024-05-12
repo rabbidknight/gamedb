@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import backgroundImg from "../background.jpg"
 import List from '../components/List';
 import "../components/List.css"
+import useToken from '../variables/Token'
 
 export default function Home() {
 /*
@@ -24,18 +25,56 @@ export default function Home() {
   },[])
 */
 
+/*
+axios.get('https://example.com/api/data', {
+  headers: {
+    Authorization: `Bearer ${token}` // Bearer token'i Authorization başlığında gönder
+  }
+})
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+*/
+  
+
+  const { token, setToken } = useToken();
+
+  const handleLogout = () => {
+    setToken(null); // Token'i silmek için setToken(null) çağrısı
+  };
+
   return (
     <>
     <div  className = "Navbar">
       <Link className = "Title" to="/">GameDB</Link>
-      <Link to="/SignUp"><button className = "SignUpButton">
-      Sign Up
-      </button></Link>
 
-      <Link to="/Login"><button className = "LoginButton">
-      Login
-      </button></Link>
+      {token ? ( // Token varsa
+        <>
+          <Link to="/">
+            <button className="MainButton1" onClick={handleLogout}>
+              Logout
+            </button>
+          </Link>
+          <Link to="/">
+            <button className="MainButton2">My List</button>
+          </Link>
+        </>
+      ) : (// Token yoksa
+        <>
+          <Link to="/SignUp">
+            <button className="MainButton1">Sign Up</button>
+          </Link>
+          <Link to="/Login">
+            <button className="MainButton2">Login</button>
+          </Link>
+        </>
+      )}
+    
     </div>
+
     <div>
       <img className = "Background" src={backgroundImg}/>
     </div>
@@ -44,7 +83,7 @@ export default function Home() {
     <div className='Main'>
       <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "30px"}} >Popular Games</h1>
       <List />
-      <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "30px"}} >Best Games</h1>
+      <h1 style={{textAlign: "center", marginTop: "40px", marginBottom: "30px"}} >Best Games</h1>
       <List />
       
 

@@ -1,12 +1,12 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
+import useToken from '../variables/Token'
 
 
 export default function InputForm() {
 
-  const [Arda, setArda] = useState([])
+  const { token, setToken } = useToken();
 
   const [user, setUser] = useState({
     username:"",
@@ -21,17 +21,29 @@ export default function InputForm() {
 
   const onLogin = async (e)=> {
    e.preventDefault();
-   const result = await axios.post("http://localhost:8080/api/auth/authenticate",user);
-   setArda(result.data);
+   try {
+    const result = await axios.post("http://localhost:8080/api/auth/authenticate",user);
+    setToken(result.data.token);
+   } catch (error) {
+    showErrorMessage();
+   }
   }
+
+  function showErrorMessage() {
+    var errorMessage = document.getElementById('errorMessage');
+    errorMessage.style.display = 'block';
+    var form = document.getElementById('form');
+    form.style.height = '300px';
+}
 
   return (
     
     <form className = "form" onSubmit={(e)=>onLogin(e)}>
       <div>
-        <div className='InnerFormDiv' style={{height: "280px"}}>
+        <div id='form' className='InnerFormDiv' style={{height: "280px"}}>
             <div style={{textAlign: "center", fontSize: "24px"}}>
-            Login
+            <span>Login</span>
+            <br></br><span id="errorMessage" style={{color: "rgb(212, 33, 78)", fontWeight: "bold", fontSize: "15px", display: "none", marginTop: "10px" }}>Username or password is incorrect!</span>
             <hr></hr>
             </div>
             
@@ -61,7 +73,6 @@ export default function InputForm() {
         Cancel
       </button></Link>
       </div>
-      {Arda.data}
     </form>
 
   )

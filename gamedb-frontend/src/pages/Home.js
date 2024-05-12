@@ -5,7 +5,8 @@ import backgroundImg from "../background.jpg"
 import List from '../components/List';
 import "../components/List.css"
 import useToken from '../variables/Token'
-import SearchBar from '../components/SearchBar';
+import SearchBar from '../components/SearchBar/SearchBar';
+import SearchResultsList from '../components/SearchBar/SearchResultsList';
 
 export default function Home() {
 /*
@@ -47,15 +48,12 @@ axios.get('https://example.com/api/data', {
     setToken(null); // Token'i silmek için setToken(null) çağrısı
   };
 
+  const [results, setResults] = useState([]);
+
   return (
     <>
     <div  className = "Navbar">
       <Link className = "Title" to="/">GameDB</Link>
-      <div className='search-bar-container'>
-        <SearchBar/>
-        <div>SearchBarResults</div>
-
-      </div>
 
       {token ? ( // Token varsa
         <>
@@ -81,15 +79,22 @@ axios.get('https://example.com/api/data', {
     
     </div>
 
+    <div className='search-bar-container'>
+        <SearchBar setResults = {setResults} />
+        <SearchResultsList results={results} />
+      </div>
+
     <div>
       <img className = "Background" src={backgroundImg}/>
     </div>
     
     
     <div className='Main'>
-      <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "30px"}} >Popular Games</h1>
+      <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "30px"}}>
+        Popular Games</h1>
       <List />
-      <h1 style={{textAlign: "center", marginTop: "40px", marginBottom: "30px"}} >Best Games</h1>
+      <h1 style={{textAlign: "center", marginTop: "40px", marginBottom: "30px"}}>
+        Best Games</h1>
       <List />
       
 

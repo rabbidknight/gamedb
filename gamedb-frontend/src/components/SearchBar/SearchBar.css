@@ -1,6 +1,6 @@
 .input-wrapper {
     width: 100%;
-    height: 2.5rem;
+    height: 40px;
     border: none;
     border-radius: 10px;
     padding: 0 15px;
@@ -28,15 +28,16 @@
   }
 
   .results-list {
-    width: 100%;
+    position: absolute;
+    left: 34%-30px;
+    top: 84px;
+    width: 31.5%;
     background-color: white;
     display: flex;
     flex-direction: column;
     box-shadow: 0px 0px 8px #ddd;
     border-radius: 10px;
-    margin-top: 1rem;
     max-height: 300px;
-    overflow-y: auto;
   }
 
   .search-result {

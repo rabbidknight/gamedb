@@ -55,6 +55,11 @@ axios.get('https://example.com/api/data', {
     <div  className = "Navbar">
       <Link className = "Title" to="/">GameDB</Link>
 
+      <div className='search-bar-container'>
+        <SearchBar setResults = {setResults} />
+        <SearchResultsList results={results} />
+      </div>
+
       {token ? ( // Token varsa
         <>
           <Link to="/">
@@ -79,10 +84,7 @@ axios.get('https://example.com/api/data', {
     
     </div>
 
-    <div className='search-bar-container'>
-        <SearchBar setResults = {setResults} />
-        <SearchResultsList results={results} />
-      </div>
+    
 
     <div>
       <img className = "Background" src={backgroundImg}/>
@@ -96,7 +98,6 @@ axios.get('https://example.com/api/data', {
       <h1 style={{textAlign: "center", marginTop: "40px", marginBottom: "30px"}}>
         Best Games</h1>
       <List />
-      
 
     </div>
     </>

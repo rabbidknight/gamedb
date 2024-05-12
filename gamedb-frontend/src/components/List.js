@@ -28,33 +28,33 @@ export default function List() {
   };
 
     return(
-<div class="container">
-  <div class="outercontent" style={backgroundStyle1}>
-    <div class="content">
+<div className="container">
+  <div className="outercontent" style={backgroundStyle1}>
+    <div className="content">
      <h2>The Withcer 3</h2>
       <span>Action/Adventure</span>
     </div>
   </div>
-  <div class="outercontent" style={backgroundStyle2}>
-    <div class="content">
+  <div className="outercontent" style={backgroundStyle2}>
+    <div className="content">
       <h2>Baldurs gate 3</h2>
       <span>Turn-Based/RPG</span>
     </div>
   </div>
-  <div class="outercontent" style={backgroundStyle3}>
-    <div class="content">
+  <div className="outercontent" style={backgroundStyle3}>
+    <div className="content">
       <h2>Detroit: Become Human</h2>
       <span>Nice-Story/Adventure</span>
     </div>
   </div>
-  <div class="outercontent">
-    <div class="content">
+  <div className="outercontent">
+    <div className="content">
       <h2>...</h2>
       <span>...</span>
     </div>
   </div>
-  <div class="outercontent">
-    <div class="content">
+  <div className="outercontent">
+    <div className="content">
       <h2>...</h2>
       <span>...</span>
     </div>

@@ -27,7 +27,7 @@ export default function InputForm() {
 
   return (
     
-    <form className = "form" onLogin={(e)=>onLogin(e)}>
+    <form className = "form" onSubmit={(e)=>onLogin(e)}>
       <div>
         <div className='InnerFormDiv' style={{height: "280px"}}>
             <div style={{textAlign: "center", fontSize: "24px"}}>
@@ -35,16 +35,16 @@ export default function InputForm() {
             <hr></hr>
             </div>
             
-            <div class="form__group">
-            <input type="input" class="form__field" placeholder="username" required
+            <div className="form__group">
+            <input type="input" className="form__field" placeholder="username" required
             name = "username" value={username} onChange={(e)=>onInputChange(e)}/>
-            <label class="form__label">Username</label>
+            <label className="form__label">Username</label>
             </div>
 
-            <div class="form__group">
-            <input type="password" class="form__field" placeholder="password" required
+            <div className="form__group">
+            <input type="password" className="form__field" placeholder="password" required
             name = "password" value={password} onChange={(e)=>onInputChange(e)}/>
-            <label class="form__label">Password</label>
+            <label className="form__label">Password</label>
             </div>
             <div style={{textAlign: "center"}}>
             Dont have an account?<br></br>

@@ -36,22 +36,22 @@ export default function InputForm() {
             Sign Up
             <hr></hr>
             </div>
-          <div class="form__group">
-          <input type="input" class="form__field" placeholder="Userame" required 
+          <div className="form__group">
+          <input type="input" className="form__field" placeholder="Userame" required 
           name="username" value={username} onChange={(e)=>onInputChange(e)}/>
-          <label class="form__label">Username</label>
+          <label className="form__label">Username</label>
           </div>
 
-          <div class="form__group">
-          <input type="input" class="form__field" placeholder="Email" required
+          <div className="form__group">
+          <input type="input" className="form__field" placeholder="Email" required
           name = "email" value={email} onChange={(e)=>onInputChange(e)}/>
-          <label class="form__label">Email</label>
+          <label className="form__label">Email</label>
           </div>
 
-          <div class="form__group">
-          <input type="password" class="form__field" placeholder="Password" required
+          <div className="form__group">
+          <input type="password" className="form__field" placeholder="Password" required
           name = "password" value={password} onChange={(e)=>onInputChange(e)}/>
-          <label class="form__label">Password</label>
+          <label className="form__label">Password</label>
           </div>
           <div style={{textAlign: "center"}}>
           Already have an account?<br></br>

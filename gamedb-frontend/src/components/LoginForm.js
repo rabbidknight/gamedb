@@ -6,6 +6,8 @@ import useToken from '../variables/Token'
 
 export default function InputForm() {
 
+  const navigate = useNavigate();
+
   const { token, setToken } = useToken();
 
   const [user, setUser] = useState({
@@ -24,6 +26,8 @@ export default function InputForm() {
    try {
     const result = await axios.post("http://localhost:8080/api/auth/authenticate",user);
     setToken(result.data.token);
+    setTimeout(function(){navigate("/");},50);
+    
    } catch (error) {
     showErrorMessage();
    }

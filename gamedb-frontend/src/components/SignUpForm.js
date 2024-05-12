@@ -1,11 +1,13 @@
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useToken from '../variables/Token'
 
 
 
 export default function InputForm() {
+
+  const navigate = useNavigate();
 
   const { token, setToken } = useToken();
 
@@ -25,7 +27,8 @@ export default function InputForm() {
    e.preventDefault();
    try {
     const response = await axios.post("http://localhost:8080/api/auth/register", user);
-   setToken(response.data.token);
+    setToken(response.data.token);
+    navigate("/");
    } catch (error) {
     showErrorMessage();
    }

@@ -5,6 +5,7 @@ import backgroundImg from "../background.jpg"
 import List from '../components/List';
 import "../components/List.css"
 import useToken from '../variables/Token'
+import SearchBar from '../components/SearchBar';
 
 export default function Home() {
 /*
@@ -50,6 +51,11 @@ axios.get('https://example.com/api/data', {
     <>
     <div  className = "Navbar">
       <Link className = "Title" to="/">GameDB</Link>
+      <div className='search-bar-container'>
+        <SearchBar/>
+        <div>SearchBarResults</div>
+
+      </div>
 
       {token ? ( // Token varsa
         <>

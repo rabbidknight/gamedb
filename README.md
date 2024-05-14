@@ -8,7 +8,7 @@ https://marmaraedutr-my.sharepoint.com/:w:/g/personal/boraduman_marun_edu_tr/Eeo
 # dsd:
 https://marmaraedutr-my.sharepoint.com/:w:/g/personal/boraduman_marun_edu_tr/EYzTpFZc4opNplAB6INFKfYB5doOr9KnwWVGXQvZR9hX7g?e=R9iuKP
 
-Component diagram: https://drive.google.com/file/d/15rtcnxfCkVDpaAvvJlFWJlx873rdek1f/view?usp=sharing
+Component diagram(click on "Open with draw.io") : https://drive.google.com/file/d/15rtcnxfCkVDpaAvvJlFWJlx873rdek1f/view?usp=sharing
 
 
 

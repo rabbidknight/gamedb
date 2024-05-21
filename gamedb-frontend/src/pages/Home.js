@@ -10,8 +10,6 @@ import SearchResultsList from '../components/SearchBar/SearchResultsList';
 import UsernamePart from '../components/UsernamePart';
 
 
-
-
 export default function Home() {
 /*
   const [Games, setGames] = useState();
@@ -45,22 +43,9 @@ axios.get('https://example.com/api/data', {
   });
 */
   
-
   const { token, setToken } = useToken();
 
-  const handleLogout = () => {
-    setToken(null); // Token'i silmek için setToken(null) çağrısı
-  };
-
   const [results, setResults] = useState([]);
-
-
-  const [showMenu, setShowMenu] = useState(false);
-
-  const toggleMenu = () => {
-    setShowMenu(!showMenu);
-  };
-
 
   return (
     <>

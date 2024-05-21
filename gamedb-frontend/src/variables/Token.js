@@ -13,5 +13,4 @@ const useToken = () => {
     return { token, setToken };
   };
 
-  
   export default useToken;

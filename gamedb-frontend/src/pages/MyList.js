@@ -1,6 +1,4 @@
 import Navbar from '../components/Navbar'
-import UserTable from '../components/UserTable'
-import SignUpForm from '../components/SignUpForm'
 import backgroundImg from "../background.jpg"
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -10,11 +8,9 @@ import useToken from '../variables/Token'
 import UsernamePart from '../components/UsernamePart'
 
 
-export default function AddUser() {
+export default function MyList() {
 
-  const { token, setToken } = useToken();
-  
-
+  const {token, setToken } = useToken();
   const [results, setResults] = useState([]);
 
   return (
@@ -38,7 +34,7 @@ export default function AddUser() {
     </div>
 
     <div className='Main'>
-      <UserTable />
+      
 
     </div>
     </>

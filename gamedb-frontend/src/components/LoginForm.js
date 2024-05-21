@@ -2,13 +2,15 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import useToken from '../variables/Token'
-
+import useUsername from '../variables/Username'
 
 export default function InputForm() {
 
   const navigate = useNavigate();
 
   const { token, setToken } = useToken();
+
+  const {username2, setUsername } = useUsername();
 
   const [user, setUser] = useState({
     username:"",
@@ -26,8 +28,8 @@ export default function InputForm() {
    try {
     const result = await axios.post("http://localhost:8080/api/auth/authenticate",user);
     setToken(result.data.token);
+    setUsername(username);
     setTimeout(function(){navigate("/");},50);
-    
    } catch (error) {
     showErrorMessage();
    }

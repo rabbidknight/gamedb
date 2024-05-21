@@ -1,16 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import useToken from '../variables/Token'
 
 export default function UserTable() {
   const [users, setUsers] = useState([]);
+  const { token, setToken } = useToken();
 
   useEffect(()=> {  // when page is loading this is executed
   loadUsers();
   },[]);
 
-  const loadUsers = async()=> {
-  const result = await axios.get("http://localhost:8080/users");
-  setUsers(result.data);
+  const loadUsers = ()=> {
+    axios.post('http://localhost:8080/api/userlist/addtolist', 
+  {
+    headers: {
+      Authorization: `Bearer ${token}` // Correct use of template literals
+    }
+  }
+)
+.then(response => {
+  console.log(response.data);
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+  //setUsers(result.data);
+  
   }
   return (
     <table>

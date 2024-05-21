@@ -3,7 +3,7 @@ import UserTable from '../components/UserTable'
 import LoginForm from '../components/LoginForm'
 import backgroundImg from "../background.jpg"
 
-export default function AddUser() {
+export default function LoginPage() {
   return (
     <>
     <Navbar/>

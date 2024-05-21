@@ -1,9 +1,9 @@
 import Navbar from '../components/Navbar'
 import UserTable from '../components/UserTable'
-import InputForm from '../components/SignUpForm'
+import SignUpForm from '../components/SignUpForm'
 import backgroundImg from "../background.jpg"
 
-export default function AddUser() {
+export default function SignUpPage() {
   return (
     <>
     <Navbar/>
@@ -11,7 +11,7 @@ export default function AddUser() {
       <img className = "Background" src={backgroundImg}/>
     </div>
     <div className='Main'>
-    <InputForm/>
+    <SignUpForm/>
     
     </div>
     </>

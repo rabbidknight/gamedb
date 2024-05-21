@@ -11,7 +11,6 @@
     font-weight: bold;
     font-size: 28px;
     box-shadow: -10px 6px 15px rgba(150, 54, 194, 0.3), 10px 6px 15px rgba(31, 130, 184, 0.3);
-    margin-left: 30px;
   }
 
   .Background {
@@ -212,6 +211,13 @@
     background: transparent;
     transition: border-color 0.2s;
   }
+
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #1b1b1be7 inset !important;
+  -webkit-text-fill-color: white !important;
+}
   
   .form__field::placeholder {
     color: transparent;
@@ -278,13 +284,15 @@
     border: none
   }
   
-  .SignInLink {
+  .SignUpLink {
+    display: inline-block;
     color: rgb(18, 154, 196);
-    
+    margin-top: 5px;
   }
   .LoginLink {
+    display: inline-block;
     color: rgb(18, 154, 196);
-    
+    margin-top: 5px;
   }
 
   .form {
@@ -301,4 +309,66 @@
     z-index: 3;
     margin-right: 30px;
     margin-left: 30px;
+  }
+
+  .Username-part {
+    background-color: #eb1c1c00;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.1s ease-in-out;
+  }
+
+  .Username-field {
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    border: 0;
+    font-size: 18px;
+    margin-left: 10px;
+  }
+  
+  .Username-field-bottom {
+    background-color: #333333;
+    width: 115px;
+    opacity: 0;
+    gap: 5px;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    
+  }
+
+  .Username-field-bottom button{
+    font-size: 15px;
+    height: 30px;
+    width: 100%;
+    text-align:start;
+    transition: background-color 0.2s ease-in-out;
+    color: white;
+    border: 0;
+    background-color: #333333;
+    cursor: pointer;
+  }
+  
+  .Username-field-bottom button:hover{
+    background-color: rgba(166, 9, 228, 0.464);
+  }
+
+  .Username-part:hover {
+    background-color: rgb(54, 54, 54);
+  }
+
+  .Username-part:focus-within {
+    background-color: rgb(54, 54, 54);
+  }
+
+  .Username-part:focus-within .Username-field-bottom {
+    opacity: 1;
+    visibility: visible;
   }

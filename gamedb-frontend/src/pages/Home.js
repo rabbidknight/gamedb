@@ -7,6 +7,10 @@ import "../components/List.css"
 import useToken from '../variables/Token'
 import SearchBar from '../components/SearchBar/SearchBar';
 import SearchResultsList from '../components/SearchBar/SearchResultsList';
+import UsernamePart from '../components/UsernamePart';
+
+
+
 
 export default function Home() {
 /*
@@ -50,6 +54,14 @@ axios.get('https://example.com/api/data', {
 
   const [results, setResults] = useState([]);
 
+
+  const [showMenu, setShowMenu] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+
   return (
     <>
     <div  className = "Navbar">
@@ -62,14 +74,15 @@ axios.get('https://example.com/api/data', {
 
       {token ? ( // Token varsa
         <>
-          <Link to="/">
+          <Link to="/MyList">
             <button className="MainButton1">
               My List
             </button>
           </Link>
-          <Link to="/">
-            <button className="MainButton2" onClick={handleLogout}>Logout</button>
-          </Link>
+          
+          <UsernamePart />
+          
+        
         </>
       ) : (// Token yoksa
         <>

@@ -45,7 +45,7 @@ CREATE TABLE `Games` (
 
 LOCK TABLES `Games` WRITE;
 /*!40000 ALTER TABLE `Games` DISABLE KEYS */;
-INSERT INTO `Games` VALUES (1,'Super Bomberman',1,1992,1,'1',NULL,NULL),(2,'Gex: Enter the Gecko',2,1995,2,NULL,NULL,NULL),(3,'Tactics Ogre',2,1996,3,NULL,NULL,NULL),(4,'Beyond Good & Evil',3,2004,4,NULL,NULL,NULL),(5,'Meteos',4,2007,5,NULL,NULL,NULL),(6,'Sid Meier\'s Pirates!',5,2004,6,NULL,NULL,NULL);
+INSERT INTO `Games` VALUES (1,'Super Bomberman',1,1992,1,'1','https://upload.wikimedia.org/wikipedia/en/7/7a/Super.Bomberman.Box.Art.SNES.PAL.png',NULL),(2,'Gex: Enter the Gecko',2,1995,2,NULL,'https://upload.wikimedia.org/wikipedia/en/5/59/Gex2Cover.jpg',NULL),(3,'Tactics Ogre',2,1996,3,NULL,'https://upload.wikimedia.org/wikipedia/en/4/40/SFC_Tactics_Ogre_-_Let_Us_Cling_Together_cover_art.jpg',NULL),(4,'Beyond Good & Evil',3,2004,4,NULL,'https://upload.wikimedia.org/wikipedia/en/c/ce/BGE-cover.jpg',NULL),(5,'Meteos',4,2007,5,NULL,'https://upload.wikimedia.org/wikipedia/en/2/20/Meteos.jpg',NULL),(6,'Sid Meier\'s Pirates!',5,2004,6,NULL,'https://upload.wikimedia.org/wikipedia/en/7/70/Sid_Meier%27s_Pirates%21_%282004%29_Coverart.png',NULL);
 /*!40000 ALTER TABLE `Games` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-21 23:52:25
+-- Dump completed on 2024-05-22  0:07:52

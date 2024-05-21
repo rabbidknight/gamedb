@@ -29,7 +29,10 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `ConsoleName`,
  1 AS `ReleaseYear`,
  1 AS `DeveloperName`,
- 1 AS `Genres`*/;
+ 1 AS `Genres`,
+ 1 AS `ListIDs`,
+ 1 AS `ImageURL`,
+ 1 AS `Rating`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -40,12 +43,12 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
-/*!50001 SET character_set_client      = utf8mb3 */;
-/*!50001 SET character_set_results     = utf8mb3 */;
-/*!50001 SET collation_connection      = utf8mb3_general_ci */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `viewtop20gamesorderedbyname` AS select `g`.`GameID` AS `GameID`,`g`.`Name` AS `Name`,`c`.`Name` AS `ConsoleName`,`g`.`ReleaseYear` AS `ReleaseYear`,`d`.`Name` AS `DeveloperName`,(select group_concat(`ge`.`Name` separator ', ') from (`game_genres` `gg` join `genres` `ge` on((`gg`.`GenreID` = `ge`.`GenreID`))) where (`gg`.`GameID` = `g`.`GameID`)) AS `Genres` from ((`games` `g` join `consoles` `c` on((`c`.`ConsoleID` = `g`.`ConsoleID`))) join `developers` `d` on((`d`.`DeveloperID` = `g`.`DeveloperID`))) order by `g`.`Name` limit 20 */;
+/*!50001 VIEW `viewtop20gamesorderedbyname` AS select `g`.`GameID` AS `GameID`,`g`.`Name` AS `Name`,`c`.`Name` AS `ConsoleName`,`g`.`ReleaseYear` AS `ReleaseYear`,`d`.`Name` AS `DeveloperName`,(select group_concat(`ge`.`Name` separator ', ') from (`game_genres` `gg` join `genres` `ge` on((`gg`.`GenreID` = `ge`.`GenreID`))) where (`gg`.`GameID` = `g`.`GameID`)) AS `Genres`,`g`.`List` AS `ListIDs`,`g`.`Image` AS `ImageURL`,`g`.`Rating` AS `Rating` from ((`games` `g` join `consoles` `c` on((`c`.`ConsoleID` = `g`.`ConsoleID`))) join `developers` `d` on((`d`.`DeveloperID` = `g`.`DeveloperID`))) order by `g`.`Name` limit 20 */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -191,4 +194,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-21 23:52:25
+-- Dump completed on 2024-05-22  0:07:52

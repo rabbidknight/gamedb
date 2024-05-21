@@ -262,19 +262,40 @@
     box-shadow: none;
   }
   
-  table { /*deneme tablosu*/
+  .GameTable { 
+    border-collapse: collapse;
     color: white;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
     margin-bottom: 30px;
-    background-color: rgba(34, 37, 36, 0.7);
-    border-radius: 20px;
+    background-color: rgba(34, 37, 36, 0.55);
+    border-radius: 6px;
   }
   
-  td {
-    width: 250px;
-    border:1px solid black;
+  .GameTable th {
+    padding-bottom: 6px;
+  }
+
+  .GameTable tr {
+    border: 2px solid black;
+  }
+
+  
+  .GameTable td {
+    text-align: center;
+    width: 200px;
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+  .GameTable td img {
+    width: 90px;
+    display: block; /* Padding'i sıfırlamak için */
+  }
+
+  .GameTable td.image-cell {
+    padding: 0; /* Görüntü hücreleri için padding kaldırıldı */
   }
 
   hr {

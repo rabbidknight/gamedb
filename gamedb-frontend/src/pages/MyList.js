@@ -6,6 +6,7 @@ import SearchBar from '../components/SearchBar/SearchBar';
 import SearchResultsList from '../components/SearchBar/SearchResultsList';
 import useToken from '../variables/Token'
 import UsernamePart from '../components/UsernamePart'
+import GameList from '../components/GameList';
 
 
 export default function MyList() {
@@ -34,7 +35,7 @@ export default function MyList() {
     </div>
 
     <div className='Main'>
-      
+      <GameList />
 
     </div>
     </>

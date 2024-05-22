@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.36, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: gamedb_main
+-- Host: localhost    Database: gamedb_main
 -- ------------------------------------------------------
 -- Server version	8.3.0
 
@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Consoles`
+-- Table structure for table `consoles`
 --
 
-DROP TABLE IF EXISTS `Consoles`;
+DROP TABLE IF EXISTS `consoles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Consoles` (
+CREATE TABLE `consoles` (
   `ConsoleID` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ConsoleID`)
@@ -30,13 +30,13 @@ CREATE TABLE `Consoles` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Consoles`
+-- Dumping data for table `consoles`
 --
 
-LOCK TABLES `Consoles` WRITE;
-/*!40000 ALTER TABLE `Consoles` DISABLE KEYS */;
-INSERT INTO `Consoles` VALUES (1,'Super Nintendo'),(2,'PS1'),(3,'PS2'),(4,'DS'),(5,'PC');
-/*!40000 ALTER TABLE `Consoles` ENABLE KEYS */;
+LOCK TABLES `consoles` WRITE;
+/*!40000 ALTER TABLE `consoles` DISABLE KEYS */;
+INSERT INTO `consoles` VALUES (1,'Super Nintendo'),(2,'PS1'),(3,'PS2'),(4,'DS'),(5,'PC');
+/*!40000 ALTER TABLE `consoles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22  0:07:52
+-- Dump completed on 2024-05-23  2:22:01

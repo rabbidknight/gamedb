@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.36, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: gamedb_main
+-- Host: localhost    Database: gamedb_main
 -- ------------------------------------------------------
 -- Server version	8.3.0
 
@@ -56,7 +56,7 @@ SET character_set_client = @saved_cs_client;
 --
 -- Dumping routines for database 'gamedb_main'
 --
-/*!50003 DROP PROCEDURE IF EXISTS `AddGameToList` */;
+/*!50003 DROP PROCEDURE IF EXISTS `addgametolist` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -66,29 +66,22 @@ SET character_set_client = @saved_cs_client;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `AddGameToList`(IN inputGameID INT, IN inputListID INT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addgametolist`(IN userName VARCHAR(255), IN gameName VARCHAR(255), IN listName VARCHAR(255))
 BEGIN
-    DECLARE currentLists VARCHAR(255) DEFAULT '';
-
-    -- Retrieve current List IDs for the game
-    SELECT List FROM Games WHERE GameID = inputGameID INTO currentLists;
-    SELECT CONCAT('Current Lists Before: ', currentLists);  -- Debug output
-
-    -- Check if the game already has list IDs assigned
-    IF currentLists IS NULL OR currentLists = '' THEN
-        SET currentLists = CONVERT(inputListID, CHAR);
-    ELSE
-        -- Only add the new listID if it's not already in the list
-        IF NOT FIND_IN_SET(inputListID, currentLists) THEN
-            SET currentLists = CONCAT(currentLists, ',', inputListID);
-        END IF;
-    END IF;
-    SELECT CONCAT('Current Lists After: ', currentLists);  -- Debug output
-
-    -- Update the game entry with the new list of IDs
-    UPDATE Games SET List = currentLists WHERE GameID = inputGameID;
-    SELECT ROW_COUNT();  -- Outputs the number of affected rows
-END ;;
+		DECLARE curuserID, curgameID INT;
+		SELECT u.UserID
+        INTO curuserID
+        FROM users u
+        WHERE u.Username = userName;
+        
+        SELECT g.GameID
+        INTO curgameID
+        FROM games g
+        WHERE g.Name = gameName;
+        
+        INSERT INTO userlists (GameID, UserID, ListName)
+        VALUES (curgameID, curuserID, listName);
+    END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -117,6 +110,65 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getuserfromusername` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getuserfromusername`(IN inputUsername VARCHAR(255))
+BEGIN
+    SELECT *
+	FROM users 
+	WHERE Username = inputUsername;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `getuserlist` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getuserlist`(IN userName VARCHAR(255))
+BEGIN
+		DECLARE curuserID INT;
+		SELECT u.UserID
+        INTO curuserID
+        FROM users u
+        WHERE u.Username = userName;
+        
+        SELECT g.GameID , l.ListName, g.Name, c.Name as ConsoleName, g.ReleaseYear, d.Name as DeveloperName, (
+						SELECT GROUP_CONCAT(ge.Name SEPARATOR ', ')
+						FROM game_genres gg 
+                        INNER JOIN genres ge ON gg.GenreID = ge.GenreID
+                        WHERE gg.GameID = g.GameID
+					) as Genres
+        FROM userlists l
+        INNER JOIN games g ON g.GameID = l.GameID
+        INNER JOIN consoles c ON c.ConsoleID = g.ConsoleID
+        INNER JOIN developers d ON d.DeveloperID = g.DeveloperID
+        
+        WHERE l.UserID = curuserID
+        ORDER BY l.ListName;
+        
+    END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `RateGame` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -133,6 +185,28 @@ BEGIN
     UPDATE Games
     SET Rating = inputRating
     WHERE GameID = inputGameID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `searchGame` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchGame`(IN gameName VARCHAR(255))
+BEGIN
+    SELECT g.Name, g.Image
+	FROM games g
+	WHERE  lower(g.Name) LIKE lower(CONCAT(gameName, "%"))
+    LIMIT 5;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -194,4 +268,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22  0:07:52
+-- Dump completed on 2024-05-23  2:22:02

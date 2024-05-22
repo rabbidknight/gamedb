@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.36, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: gamedb_main
+-- Host: localhost    Database: gamedb_main
 -- ------------------------------------------------------
 -- Server version	8.3.0
 
@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Genres`
+-- Table structure for table `genres`
 --
 
-DROP TABLE IF EXISTS `Genres`;
+DROP TABLE IF EXISTS `genres`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Genres` (
+CREATE TABLE `genres` (
   `GenreID` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`GenreID`)
@@ -30,13 +30,13 @@ CREATE TABLE `Genres` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Genres`
+-- Dumping data for table `genres`
 --
 
-LOCK TABLES `Genres` WRITE;
-/*!40000 ALTER TABLE `Genres` DISABLE KEYS */;
-INSERT INTO `Genres` VALUES (1,'Multiplayer'),(2,'Action'),(3,'Platformer'),(4,'RPG'),(5,'Tactical'),(6,'Adventure'),(7,'Puzzle'),(8,'RTS'),(9,'Simulation');
-/*!40000 ALTER TABLE `Genres` ENABLE KEYS */;
+LOCK TABLES `genres` WRITE;
+/*!40000 ALTER TABLE `genres` DISABLE KEYS */;
+INSERT INTO `genres` VALUES (1,'Multiplayer'),(2,'Action'),(3,'Platformer'),(4,'RPG'),(5,'Tactical'),(6,'Adventure'),(7,'Puzzle'),(8,'RTS'),(9,'Simulation');
+/*!40000 ALTER TABLE `genres` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22  0:07:52
+-- Dump completed on 2024-05-23  2:22:01

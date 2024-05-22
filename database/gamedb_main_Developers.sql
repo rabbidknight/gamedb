@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.36, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: gamedb_main
+-- Host: localhost    Database: gamedb_main
 -- ------------------------------------------------------
 -- Server version	8.3.0
 
@@ -16,13 +16,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Developers`
+-- Table structure for table `developers`
 --
 
-DROP TABLE IF EXISTS `Developers`;
+DROP TABLE IF EXISTS `developers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Developers` (
+CREATE TABLE `developers` (
   `DeveloperID` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`DeveloperID`)
@@ -30,13 +30,13 @@ CREATE TABLE `Developers` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Developers`
+-- Dumping data for table `developers`
 --
 
-LOCK TABLES `Developers` WRITE;
-/*!40000 ALTER TABLE `Developers` DISABLE KEYS */;
-INSERT INTO `Developers` VALUES (1,'Hudson Soft'),(2,'Crystal Dynamics'),(3,'SquareSoft'),(4,'Ubisoft'),(5,'Nintendo'),(6,'Firaxis Games');
-/*!40000 ALTER TABLE `Developers` ENABLE KEYS */;
+LOCK TABLES `developers` WRITE;
+/*!40000 ALTER TABLE `developers` DISABLE KEYS */;
+INSERT INTO `developers` VALUES (1,'Hudson Soft'),(2,'Crystal Dynamics'),(3,'SquareSoft'),(4,'Ubisoft'),(5,'Nintendo'),(6,'Firaxis Games');
+/*!40000 ALTER TABLE `developers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22  0:07:51
+-- Dump completed on 2024-05-23  2:22:00

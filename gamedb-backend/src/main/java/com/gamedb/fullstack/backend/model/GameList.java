@@ -13,11 +13,13 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @RequiredArgsConstructor
 @Getter
-public class Game {
+public class GameList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "GameID")
     private int gameID;
+    @Column(name = "Listname")
+    private String listName;
     @Column(name = "Name")
     private String name;
     @Column(name = "Consolename")

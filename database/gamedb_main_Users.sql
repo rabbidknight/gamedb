@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.36, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: gamedb_main
+-- Host: localhost    Database: gamedb_main
 -- ------------------------------------------------------
 -- Server version	8.3.0
 
@@ -16,31 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `Users`
+-- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `Users`;
+DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `Users` (
+CREATE TABLE `users` (
   `UserID` int NOT NULL AUTO_INCREMENT,
   `Username` varchar(255) NOT NULL,
   `Email` varchar(255) NOT NULL,
-  `PasswordHash` char(64) NOT NULL,
+  `Password` char(64) NOT NULL,
+  `Role` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`UserID`),
   UNIQUE KEY `Username` (`Username`),
   UNIQUE KEY `Email` (`Email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Users`
+-- Dumping data for table `users`
 --
 
-LOCK TABLES `Users` WRITE;
-/*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'username','user@example.com','hash_here'),(2,'userAlpha','alpha@example.com','password123'),(3,'userBeta','beta@example.com','password456'),(4,'userGamma','gamma@example.com','password789');
-/*!40000 ALTER TABLE `Users` ENABLE KEYS */;
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'username','user@example.com','hash_here',NULL),(2,'userAlpha','alpha@example.com','password123',NULL),(3,'userBeta','beta@example.com','password456',NULL),(4,'userGamma','gamma@example.com','password789',NULL),(153,'furkan','fgokgoz02@hotmail.com','$2a$10$A6r.nual/iF6VXF3JpHBd.D6OLP36eflDE5in5Ye2KNNJb4Zp0rjG','USER');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22  0:07:51
+-- Dump completed on 2024-05-23  2:22:00

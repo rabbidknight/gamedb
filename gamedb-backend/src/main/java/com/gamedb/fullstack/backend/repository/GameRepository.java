@@ -13,7 +13,7 @@ import com.gamedb.fullstack.backend.model.Game;
 @Repository
 public interface GameRepository extends JpaRepository<Game, Integer>{
    
-    @Query(value = "SELECT * FROM viewtop20gamesorderedbyname", nativeQuery = true)
+    @Query(value = "SELECT * FROM viewtop20gamesorderedbyname;", nativeQuery = true)
     List<Game> find20GamesByNameOrder();
 
 }

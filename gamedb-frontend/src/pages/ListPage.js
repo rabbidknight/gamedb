@@ -1,7 +1,8 @@
 import Navbar from '../components/Navbar'
 import backgroundImg from "../background.jpg"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import SearchBar from '../components/SearchBar/SearchBar';
 import SearchResultsList from '../components/SearchBar/SearchResultsList';
 import useToken from '../variables/Token'
@@ -11,8 +12,21 @@ import GameList from '../components/GameList';
 
 export default function MyList() {
 
+  const navigate = useNavigate();
   const {token, setToken } = useToken();
   const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    if (!token) {
+      // Eğer oyun bulunamazsa ana sayfaya yönlendirme yap
+      navigate('/');
+    }
+  }, [token, navigate]);
+
+  if (!token) {
+    // Eğer oyun bulunamazsa ana sayfaya veya 404 sayfasına yönlendirme yapabilirsiniz
+    return null;
+  }
 
   return (
     <>

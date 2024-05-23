@@ -1,20 +1,23 @@
 import './App.css';
 import Home from './pages/Home';
 import {BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignUp from './pages/SignUp';
-import Login from "./pages/Login";
-import MyList from "./pages/MyList";
-import { useState } from 'react';
+import SignUpPage from './pages/SignUpPage';
+import LoginPage from "./pages/LoginPage";
+import ListPage from "./pages/ListPage";
+import GamePage from './pages/GamePage';
 
 export default function App() {
   
   return (
     <Router>
       <Routes>
-        <Route exact path='/' element={<Home/>}/>
-        <Route exact path='/SignUp' element={<SignUp/>}/>
-        <Route exact path='/Login' element={<Login/>}/>
-        <Route exact path='/MyList' element={<MyList/>}/>
+      <Route path="/" element={<Home />} />
+        <Route path="/SignUp" element={<SignUpPage />} />
+        <Route path="/Login" element={<LoginPage />} />
+        <Route path="/List" element={<ListPage />} />
+        <Route path="/Game/:name" element={<GamePage />} />
+        {/* Wildcard route to catch any undefined routes and redirect to home */}
+        <Route path="*" element={<Home />} />
       </Routes>
     </Router>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import './Home.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import backgroundImg from "../background.jpg"
 import List from '../components/List';
 import "../components/List.css"
@@ -43,9 +43,13 @@ axios.get('https://example.com/api/data', {
   });
 */
   
+  const navigate = useNavigate();
   const { token, setToken } = useToken();
-  console.log(token);
   const [results, setResults] = useState([]);
+
+  useEffect(()=> {  // when page is loading this is executed
+    navigate("/");
+    },[]);
 
   return (
     <>

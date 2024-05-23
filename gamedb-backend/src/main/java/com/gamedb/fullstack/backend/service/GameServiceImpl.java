@@ -24,4 +24,14 @@ public class GameServiceImpl implements GameService {
         return gameRepository.find20GamesByNameOrder();
     }
 
+    @Override
+    public Game getOneGame(String gameName) {
+        return gameRepository.searchGameOne(gameName);
+    }
+
+    @Override
+    public List<Game> getGameFromSearch(String gameName) {
+        return gameRepository.searchGame(gameName);
+    }
+
 }

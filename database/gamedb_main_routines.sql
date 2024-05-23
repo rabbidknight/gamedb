@@ -30,7 +30,6 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `ReleaseYear`,
  1 AS `DeveloperName`,
  1 AS `Genres`,
- 1 AS `ListIDs`,
  1 AS `ImageURL`,
  1 AS `Rating`*/;
 SET character_set_client = @saved_cs_client;
@@ -48,7 +47,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `viewtop20gamesorderedbyname` AS select `g`.`GameID` AS `GameID`,`g`.`Name` AS `Name`,`c`.`Name` AS `ConsoleName`,`g`.`ReleaseYear` AS `ReleaseYear`,`d`.`Name` AS `DeveloperName`,(select group_concat(`ge`.`Name` separator ', ') from (`game_genres` `gg` join `genres` `ge` on((`gg`.`GenreID` = `ge`.`GenreID`))) where (`gg`.`GameID` = `g`.`GameID`)) AS `Genres`,`g`.`List` AS `ListIDs`,`g`.`Image` AS `ImageURL`,`g`.`Rating` AS `Rating` from ((`games` `g` join `consoles` `c` on((`c`.`ConsoleID` = `g`.`ConsoleID`))) join `developers` `d` on((`d`.`DeveloperID` = `g`.`DeveloperID`))) order by `g`.`Name` limit 20 */;
+/*!50001 VIEW `viewtop20gamesorderedbyname` AS select `g`.`GameID` AS `GameID`,`g`.`Name` AS `Name`,`c`.`Name` AS `ConsoleName`,`g`.`ReleaseYear` AS `ReleaseYear`,`d`.`Name` AS `DeveloperName`,(select group_concat(`ge`.`Name` separator ', ') from (`game_genres` `gg` join `genres` `ge` on((`gg`.`GenreID` = `ge`.`GenreID`))) where (`gg`.`GameID` = `g`.`GameID`)) AS `Genres`,`g`.`Image` AS `ImageURL`,`g`.`Rating` AS `Rating` from ((`games` `g` join `consoles` `c` on((`c`.`ConsoleID` = `g`.`ConsoleID`))) join `developers` `d` on((`d`.`DeveloperID` = `g`.`DeveloperID`))) order by `g`.`Name` limit 20 */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -81,6 +80,80 @@ BEGIN
         
         INSERT INTO userlists (GameID, UserID, ListName)
         VALUES (curgameID, curuserID, listName);
+    END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `addrating` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `addrating`(IN inputUsername VARCHAR(255), IN gameName VARCHAR(255), IN inputRating DECIMAL(3,1))
+BEGIN
+		DECLARE curuserID, curgameID INT;
+		SELECT u.UserID
+        INTO curuserID
+        FROM users u
+        WHERE u.Username = userName
+        LIMIT 1;
+        
+        SELECT g.GameID
+        INTO curgameID
+        FROM games g
+        WHERE g.Name = gameName
+        LIMIT 1;
+        
+        IF curuserID IS NOT NULL and curgameID IS NOT NULL
+        THEN 
+			IF EXISTS (SELECT * FROM ratings r WHERE r.UserID = curuserID and r.gameID = curgameID)
+			THEN UPDATE ratings re SET ratings = inputRating WHERE re.UserID = curuserID and re.gameID = curgameID;
+            ELSE INSERT INTO ratings (UserID, GameID, rating) VALUES (curuserID, curgameID, inputRating);
+            END IF;
+        END IF;
+    END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `add_rating` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `add_rating`(IN inputUsername VARCHAR(255), IN gameName VARCHAR(255), IN inputRating VARCHAR(255))
+BEGIN
+		DECLARE curuserID, curgameID INT;
+		SELECT u.UserID
+        INTO curuserID
+        FROM users u
+        WHERE u.Username = userName;
+        
+        SELECT g.GameID
+        INTO curgameID
+        FROM games g
+        WHERE g.Name = gameName;
+        
+        IF userName IS NOT NULL and gameName IS NOT NULL
+        THEN 
+			IF EXISTS (SELECT * FROM ratings r WHERE r.UserID = curuserID and r.gameID = curgameID)
+			THEN UPDATE ratings re SET ratings = inputRating WHERE re.UserID = curuserID and re.gameID = curgameID;
+            ELSE INSERT INTO ratings (UserID, GameID, rating) VALUES (curuserID, curgameID, inputRating);
+            END IF;
+        END IF;
     END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -143,24 +216,20 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `getuserlist`(IN userName VARCHAR(255))
 BEGIN
-		DECLARE curuserID INT;
-		SELECT u.UserID
-        INTO curuserID
-        FROM users u
-        WHERE u.Username = userName;
-        
         SELECT g.GameID , l.ListName, g.Name, c.Name as ConsoleName, g.ReleaseYear, d.Name as DeveloperName, (
 						SELECT GROUP_CONCAT(ge.Name SEPARATOR ', ')
 						FROM game_genres gg 
                         INNER JOIN genres ge ON gg.GenreID = ge.GenreID
                         WHERE gg.GameID = g.GameID
-					) as Genres
+					) as Genres,  g.Image as 'ImageURL'
         FROM userlists l
         INNER JOIN games g ON g.GameID = l.GameID
         INNER JOIN consoles c ON c.ConsoleID = g.ConsoleID
         INNER JOIN developers d ON d.DeveloperID = g.DeveloperID
         
-        WHERE l.UserID = curuserID
+        WHERE l.UserID IN (SELECT u.UserID
+        FROM users u
+        WHERE u.Username = userName)
         ORDER BY l.ListName;
         
     END ;;
@@ -203,10 +272,46 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `searchGame`(IN gameName VARCHAR(255))
 BEGIN
-    SELECT g.Name, g.Image
+	SELECT g.GameID , g.Name, c.Name as ConsoleName, g.ReleaseYear, d.Name as DeveloperName, (
+						SELECT GROUP_CONCAT(ge.Name SEPARATOR ', ')
+						FROM game_genres gg 
+                        INNER JOIN genres ge ON gg.GenreID = ge.GenreID
+                        WHERE gg.GameID = g.GameID
+					) as Genres, g.Image as 'ImageURL'
 	FROM games g
-	WHERE  lower(g.Name) LIKE lower(CONCAT(gameName, "%"))
+	INNER JOIN consoles c ON c.ConsoleID = g.ConsoleID
+	INNER JOIN developers d ON d.DeveloperID = g.DeveloperID
+	WHERE lower(g.Name) LIKE lower(CONCAT("%",gameName, "%"))
     LIMIT 5;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `searchGameOne` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `searchGameOne`(IN gameName VARCHAR(255))
+BEGIN
+	SELECT g.GameID , g.Name, c.Name as ConsoleName, g.ReleaseYear, d.Name as DeveloperName, (
+						SELECT GROUP_CONCAT(ge.Name SEPARATOR ', ')
+						FROM game_genres gg 
+                        INNER JOIN genres ge ON gg.GenreID = ge.GenreID
+                        WHERE gg.GameID = g.GameID
+					) as Genres, g.Image as 'ImageURL'
+	FROM games g
+	INNER JOIN consoles c ON c.ConsoleID = g.ConsoleID
+	INNER JOIN developers d ON d.DeveloperID = g.DeveloperID
+	WHERE g.Name = gameName
+    LIMIT 1;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -268,4 +373,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-23  2:22:02
+-- Dump completed on 2024-05-24  1:59:27

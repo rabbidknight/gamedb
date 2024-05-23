@@ -28,4 +28,6 @@ public class Game {
     private String developerName;
     @Column(name = "Genres")
     private String genres;
+    @Column(name = "Imageurl")
+    private String imageUrl;
 }

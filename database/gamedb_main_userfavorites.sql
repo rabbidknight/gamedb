@@ -16,30 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `game_genres`
+-- Table structure for table `userfavorites`
 --
 
-DROP TABLE IF EXISTS `game_genres`;
+DROP TABLE IF EXISTS `userfavorites`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `game_genres` (
+CREATE TABLE `userfavorites` (
+  `UserID` int NOT NULL,
   `GameID` int NOT NULL,
-  `GenreID` int NOT NULL,
-  PRIMARY KEY (`GameID`,`GenreID`),
-  KEY `GenreID` (`GenreID`),
-  CONSTRAINT `game_genres_ibfk_1` FOREIGN KEY (`GameID`) REFERENCES `games` (`GameID`),
-  CONSTRAINT `game_genres_ibfk_2` FOREIGN KEY (`GenreID`) REFERENCES `genres` (`GenreID`)
+  PRIMARY KEY (`UserID`,`GameID`),
+  KEY `GameID` (`GameID`),
+  CONSTRAINT `userfavorites_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`),
+  CONSTRAINT `userfavorites_ibfk_2` FOREIGN KEY (`GameID`) REFERENCES `games` (`GameID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `game_genres`
+-- Dumping data for table `userfavorites`
 --
 
-LOCK TABLES `game_genres` WRITE;
-/*!40000 ALTER TABLE `game_genres` DISABLE KEYS */;
-INSERT INTO `game_genres` VALUES (1,1),(1,2),(2,2),(4,2),(2,3),(3,4),(3,5),(4,6),(5,7),(6,8),(6,9);
-/*!40000 ALTER TABLE `game_genres` ENABLE KEYS */;
+LOCK TABLES `userfavorites` WRITE;
+/*!40000 ALTER TABLE `userfavorites` DISABLE KEYS */;
+INSERT INTO `userfavorites` VALUES (1,3);
+/*!40000 ALTER TABLE `userfavorites` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -1,6 +1,7 @@
 package com.gamedb.fullstack.backend.controller;
 
 import com.gamedb.fullstack.backend.model.Game;
+import com.gamedb.fullstack.backend.requests.GameRequest;
 import com.gamedb.fullstack.backend.service.GameService;
 
 import java.util.List;
@@ -21,7 +22,17 @@ public class GameController {
         return "Test is successful";
     }
     @GetMapping("/main/name")
-    public List<Game> getMethodName() {
+    public List<Game> getGameByNameOrder() {
         return gameService.get20GamesByNameOrder();
     }
+    @PostMapping("/main/gameone")
+    public Game getOneGame(@RequestBody GameRequest gameName) {
+        return gameService.getOneGame(gameName.getGameName());
+    }
+    @PostMapping("/main/gamesearch")
+    public List<Game> getSearchedGames(@RequestBody GameRequest gameName) {
+        return gameService.getGameFromSearch(gameName.getGameName());
+    }
+
+
 }

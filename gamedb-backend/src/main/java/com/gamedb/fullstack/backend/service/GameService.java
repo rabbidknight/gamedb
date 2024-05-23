@@ -7,4 +7,6 @@ import com.gamedb.fullstack.backend.model.Game;
 public interface GameService {
     public List<Game> getAllGames();
     public List<Game> get20GamesByNameOrder();
+    public Game getOneGame(String gameName);
+    public List<Game> getGameFromSearch(String gameName);
 }

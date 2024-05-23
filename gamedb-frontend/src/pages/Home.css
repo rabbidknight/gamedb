@@ -263,25 +263,26 @@
   }
   
   .GameTable { 
+    position: relative;
+    top: 40px;
     border-collapse: collapse;
     color: white;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
     margin-bottom: 30px;
     background-color: rgba(34, 37, 36, 0.55);
     border-radius: 6px;
   }
   
   .GameTable th {
-    padding-bottom: 6px;
+    height: 30px;
   }
 
   .GameTable tr {
     border: 2px solid black;
+    height: 40px;
   }
 
-  
   .GameTable td {
     text-align: center;
     width: 200px;

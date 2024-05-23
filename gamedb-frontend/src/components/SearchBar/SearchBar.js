@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
-import {FaSearch} from "react-icons/fa"
-import "./SearchBar.css"
+import React, {useState} from 'react';
+import axios from "axios";
+import {FaSearch} from "react-icons/fa";
+import "./SearchBar.css";
 
 const SearchBar = ({setResults}) => {
     const [input, setInput] = useState("");
@@ -21,9 +22,16 @@ const SearchBar = ({setResults}) => {
           });
       };
 
+
+      /*const takeResults = async(value)=> {
+        const result = await axios.get("http://localhost:8080/api/game/main/name",value);
+        setResults(result.data);
+        }*/
+
       const handleChange = (value) => {
         setInput(value);
         fetchData(value);
+        //takeResults(value);
       };
 
   return (

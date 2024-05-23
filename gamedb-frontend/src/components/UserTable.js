@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import useToken from '../variables/Token'
+import useToken from '../variables/Token';
 
 export default function UserTable() {
   const [users, setUsers] = useState([]);
@@ -24,7 +24,13 @@ export default function UserTable() {
 .catch(error => {
   console.error('Error:', error);
 });
-  //setUsers(result.data);
+
+/*
+  const loadUsers = async()=> {
+  const result = await axios.get("http://localhost:8080/users");
+  setUsers(result.data);
+  }*/
+
   
   }
   return (

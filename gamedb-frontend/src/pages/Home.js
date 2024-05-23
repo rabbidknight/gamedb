@@ -44,7 +44,7 @@ axios.get('https://example.com/api/data', {
 */
   
   const { token, setToken } = useToken();
-
+  console.log(token);
   const [results, setResults] = useState([]);
 
   return (

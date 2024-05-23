@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import useToken from '../variables/Token'
 
 export default function GameList() {
-  const [games, setGames] = useState([
+  /*const [games, setGames] = useState([
     {
       name: 'The Legend of Zelda: Breath of the Wild',
       console: 'Nintendo Switch',
@@ -26,7 +28,31 @@ export default function GameList() {
       releaseYear: 2022,
       imageUrl: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/Elden_Ring_Box_art.jpg/220px-Elden_Ring_Box_art.jpg'
     }
-  ]);
+  ]);*/
+
+  const { token, setToken } = useToken();
+  const [games, setGames] = useState([]);
+  const gamename = "Beyond Good & Evil";
+  const listname = "main";
+
+  useEffect(()=> {  // when page is loading this is executed
+    loadGames();
+    },[]);
+
+  const loadGames = async()=> {
+    const result = await axios.get("http://localhost:8080/api/userlist/getuserlists", 
+    {
+        gamename: gamename,
+        listname: listname
+    }, 
+    {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    //setGames(result.data);
+    console.log(result.data);
+    }
 
   return (
     <table className='GameTable'>
@@ -36,6 +62,8 @@ export default function GameList() {
           <th>Name</th>
           <th>Console</th>
           <th>Release Year</th>
+          <th>Developer</th>
+          <th>Genres</th>
         </tr>
       </thead>
       <tbody>
@@ -43,8 +71,10 @@ export default function GameList() {
           <tr key={index}>
             <td className='image-cell' style={{textAlign:"center", width:"110px"}}><img src={game.imageUrl} alt={game.name} style={{width: '100px'}} /></td>
             <td>{game.name}</td>
-            <td>{game.console}</td>
+            <td>{game.consoleName}</td>
             <td>{game.releaseYear}</td>
+            <td>{game.developerName}</td>
+            <td>{game.genres}</td>
           </tr>
         ))}
       </tbody>

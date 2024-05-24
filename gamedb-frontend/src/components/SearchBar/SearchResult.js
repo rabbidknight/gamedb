@@ -1,3 +1,4 @@
+import { MdHeight } from "react-icons/md";
 import "./SearchBar.css";
 
 const SearchResult = ({ result }) => {
@@ -6,7 +7,8 @@ const SearchResult = ({ result }) => {
       className="search-result"
       onClick={(e) => alert(`You selected ${result}!`)}
     >
-      {result}
+      <img src={result[0]} style={{height: "50px"}}/>
+      <span>{result[1]}</span>
     </div>
   );
 };

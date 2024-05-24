@@ -50,7 +50,7 @@ axios.get('https://example.com/api/data', {
   useEffect(()=> {  // when page is loading this is executed
     navigate("/");
     },[]);
-
+    console.log(token);
   return (
     <>
     <div  className = "Navbar">
@@ -63,7 +63,7 @@ axios.get('https://example.com/api/data', {
 
       {token ? ( // Token varsa
         <>
-          <Link to="/MyList">
+          <Link to="/list">
             <button className="MainButton1">
               My List
             </button>
@@ -75,10 +75,10 @@ axios.get('https://example.com/api/data', {
         </>
       ) : (// Token yoksa
         <>
-          <Link to="/Login">
+          <Link to="/login">
             <button className="MainButton1">Login</button>
           </Link>
-          <Link to="/SignUp">
+          <Link to="/sign-up">
             <button className="MainButton2">Sign Up</button>
           </Link>
         </>

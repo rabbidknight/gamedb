@@ -66,7 +66,7 @@ export default function InputForm() {
             </div>
             <div style={{textAlign: "center"}}>
             Dont have an account?<br></br>
-            <Link to="/SignUp"className='SignUpLink'>SignUp</Link>
+            <Link to="/sign-up"className='SignUpLink'>SignUp</Link>
             </div>
         </div>
       </div>

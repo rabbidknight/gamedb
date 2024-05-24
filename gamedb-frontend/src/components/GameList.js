@@ -32,26 +32,18 @@ export default function GameList() {
 
   const { token, setToken } = useToken();
   const [games, setGames] = useState([]);
-  const gamename = "Beyond Good & Evil";
-  const listname = "main";
 
   useEffect(()=> {  // when page is loading this is executed
     loadGames();
-    },[]);
+  },[]);
 
   const loadGames = async()=> {
-    const result = await axios.get("http://localhost:8080/api/userlist/getuserlists", 
-    {
-        gamename: gamename,
-        listname: listname
-    }, 
-    {
+    const result = await axios.get("http://localhost:8080/api/userlist/getuserlists", {
         headers: {
             Authorization: `Bearer ${token}`
         }
     });
-    //setGames(result.data);
-    console.log(result.data);
+    setGames(result.data);
     }
 
   return (
@@ -69,7 +61,7 @@ export default function GameList() {
       <tbody>
         {games.map((game, index) => (
           <tr key={index}>
-            <td className='image-cell' style={{textAlign:"center", width:"110px"}}><img src={game.imageUrl} alt={game.name} style={{width: '100px'}} /></td>
+            <td className='image-cell' style={{textAlign:"center", width:"100px", height:"130px"}}><img src={game.imageUrl} alt={game.name} style={{width: '100px', height:"130px"}} /></td>
             <td>{game.name}</td>
             <td>{game.consoleName}</td>
             <td>{game.releaseYear}</td>

@@ -12,10 +12,10 @@ export default function App() {
     <Router>
       <Routes>
       <Route path="/" element={<Home />} />
-        <Route path="/SignUp" element={<SignUpPage />} />
-        <Route path="/Login" element={<LoginPage />} />
-        <Route path="/List" element={<ListPage />} />
-        <Route path="/Game/:name" element={<GamePage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/list" element={<ListPage />} />
+        <Route path="/game/:name" element={<GamePage />} />
         {/* Wildcard route to catch any undefined routes and redirect to home */}
         <Route path="*" element={<Home />} />
       </Routes>

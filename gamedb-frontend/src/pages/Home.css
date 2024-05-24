@@ -291,7 +291,6 @@
   }
 
   .GameTable td img {
-    width: 90px;
     display: block; /* Padding'i sıfırlamak için */
   }
 

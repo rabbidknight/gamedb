@@ -6,7 +6,7 @@ import "./SearchBar.css";
 const SearchBar = ({setResults}) => {
     const [input, setInput] = useState("");
 
-    const fetchData = (value) => {
+    /*const fetchData = (value) => {
         fetch("https://jsonplaceholder.typicode.com/users")
           .then((response) => response.json())
           .then((json) => {
@@ -20,18 +20,25 @@ const SearchBar = ({setResults}) => {
             });
             setResults(results);
           });
-      };
+      };*/
 
 
-      /*const takeResults = async(value)=> {
-        const result = await axios.get("http://localhost:8080/api/game/main/name",value);
-        setResults(result.data);
-        }*/
+      const takeResults = async(value)=> {
+        const result = await axios.post("http://localhost:8080/api/game/main/gamesearch",
+        {
+          gameName: value
+        }
+        );
+        if (!value) setResults([]);
+        else {
+        console.log(result);
+        setResults(result.data);}
+        }
 
       const handleChange = (value) => {
         setInput(value);
-        fetchData(value);
-        //takeResults(value);
+        //fetchData(value);
+        takeResults(value);
       };
 
   return (

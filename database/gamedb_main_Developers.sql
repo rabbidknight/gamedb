@@ -26,7 +26,7 @@ CREATE TABLE `developers` (
   `DeveloperID` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`DeveloperID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `developers` (
 
 LOCK TABLES `developers` WRITE;
 /*!40000 ALTER TABLE `developers` DISABLE KEYS */;
-INSERT INTO `developers` VALUES (1,'Hudson Soft'),(2,'Crystal Dynamics'),(3,'SquareSoft'),(4,'Ubisoft'),(5,'Nintendo'),(6,'Firaxis Games');
+INSERT INTO `developers` VALUES (1,'Hudson Soft'),(2,'Crystal Dynamics'),(3,'SquareSoft'),(4,'Ubisoft'),(5,'Nintendo'),(6,'Firaxis Games'),(7,'BioWare'),(8,'CD Projekt Red'),(9,'Blizzard Entertainment'),(10,'FromSoftware'),(11,'Hazelight Studios'),(12,'Santa Monica Studio'),(13,'Naughty Dog'),(14,'Larian');
 /*!40000 ALTER TABLE `developers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-24 22:28:47
+-- Dump completed on 2024-05-24 23:13:59

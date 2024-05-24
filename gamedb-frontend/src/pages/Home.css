@@ -276,6 +276,9 @@
   
   .GameTable th {
     height: 30px;
+    width: 200px;
+    padding-right: 8px;
+    padding-left: 8px;
   }
 
   .GameTable tr {
@@ -302,7 +305,7 @@
     background-color: rgb(0, 0, 0);
     margin-top: 10px;
     height: 2px;
-    border: none
+    border: none;
   }
   
   .SignUpLink {

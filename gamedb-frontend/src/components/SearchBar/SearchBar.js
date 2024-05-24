@@ -31,7 +31,6 @@ const SearchBar = ({setResults}) => {
         );
         if (!value) setResults([]);
         else {
-        console.log(result);
         setResults(result.data);}
         }
 

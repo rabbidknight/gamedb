@@ -21,7 +21,7 @@ export default function MyList() {
       // Eğer oyun bulunamazsa ana sayfaya yönlendirme yap
       navigate('/');
     }
-  }, [token, navigate]);
+  }, []);
 
   if (!token) {
     // Eğer oyun bulunamazsa ana sayfaya veya 404 sayfasına yönlendirme yapabilirsiniz

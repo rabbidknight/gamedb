@@ -280,12 +280,12 @@ BEGIN
     FROM
         (`gamedb_main`.`games` `g`
         JOIN `gamedb_main`.`developers` `d` ON ((`d`.`DeveloperID` = `g`.`DeveloperID`)))
-        JOIN game_genres gg ON gg.GameID = g.GameID
     WHERE
-        (`g`.`Rating` > 5) AND gg.GenreID IN (SELECT DISTINCT gg1.GenreID
+        (`g`.`Rating` > 5) AND g.GameID IN (SELECT DISTINCT g1.GameID
 									FROM game_genres gg1
 									JOIN userlists ul ON ul.GameID = gg1.GameID
                                     JOIN users us ON ul.UserID = us.UserID
+									JOIN games g1 ON g1.GameID = gg1.GameID
 									WHERE us.Username = username)
     ORDER BY RAND()
     LIMIT 5;
@@ -423,7 +423,7 @@ BEGIN
         FROM userlists l
         INNER JOIN games g ON g.GameID = l.GameID
         INNER JOIN developers d ON d.DeveloperID = g.DeveloperID
-        INNER JOIN ratings r ON r.UserID = l.UserID
+        LEFT JOIN ratings r ON r.UserID = l.UserID AND r.GameID = g.GameID
         WHERE l.UserID IN (SELECT u.UserID
         FROM users u
         WHERE u.Username = userName)
@@ -618,4 +618,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-27  2:06:02
+-- Dump completed on 2024-05-27  2:25:12

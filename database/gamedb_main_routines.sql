@@ -165,8 +165,8 @@ BEGIN
     -- Check if the game is already in the list for this user
     SELECT COUNT(*)
     INTO exists_count
-    FROM userlists
-    WHERE UserID = curuserID AND GameID = curgameID AND ListName = listName;
+    FROM userlists us
+    WHERE us.UserID = curuserID AND us.GameID = curgameID AND us.ListName = listName;
 
     -- Insert the game into the list only if it's not already added
     IF exists_count = 0 THEN
@@ -389,10 +389,10 @@ BEGIN
     WHERE g.Name = gameName;
     
     -- Delete the game from the user's list
-    DELETE FROM userlists
+    DELETE FROM userlists us
     WHERE UserID = curuserID
     AND GameID = curgameID
-    AND ListName = listName;
+    AND us.ListName = listName;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -520,4 +520,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-26 15:15:48
+-- Dump completed on 2024-05-26 16:07:45

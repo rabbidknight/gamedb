@@ -32,7 +32,7 @@ CREATE TABLE `userlists` (
   KEY `userlists_ibfk_2_idx` (`GameID`),
   CONSTRAINT `userlist_fk1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `userlist_fk2` FOREIGN KEY (`GameID`) REFERENCES `games` (`GameID`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `userlists` (
 
 LOCK TABLES `userlists` WRITE;
 /*!40000 ALTER TABLE `userlists` DISABLE KEYS */;
-INSERT INTO `userlists` VALUES (1,5,4,'Epicness'),(2,153,5,'epicness'),(11,153,5,'coolAGames'),(12,153,15,'epic');
+INSERT INTO `userlists` VALUES (1,5,4,'Epicness'),(2,153,5,'epicness'),(11,153,5,'coolAGames'),(12,153,15,'epic'),(14,153,8,'goat'),(15,153,13,'goat'),(25,153,14,'çöp oyunlar');
 /*!40000 ALTER TABLE `userlists` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-26 15:15:48
+-- Dump completed on 2024-05-26 16:07:45

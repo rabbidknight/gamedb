@@ -33,6 +33,12 @@ public class UserListController {
         return userListService.addGameToList(username.getUsername(), userListRequest.getGamename(), userListRequest.getListname());
     }
 
+    @PostMapping("/removefromlist")
+    public String removeGameFromList(@RequestBody UserListRequest userListRequest) {
+        var username = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userListService.removeGameFromList(username.getUsername(), userListRequest.getGamename(), userListRequest.getListname());
+    }
+
     @GetMapping("/getuserlists")
     public  List<GameList> getUserLists() {
         var username = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

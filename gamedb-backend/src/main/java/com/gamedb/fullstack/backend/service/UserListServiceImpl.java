@@ -27,4 +27,10 @@ public class UserListServiceImpl implements UserListService {
         return userListRepository.getUserList(username);
     }
 
+    @Override
+    public String removeGameFromList(String username, String gamename, String listname) {
+        userListRepository.removeGameFromList(username, gamename, listname);
+        return "Successfull!";
+    }
+
 }

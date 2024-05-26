@@ -165,8 +165,8 @@ BEGIN
     -- Check if the game is already in the list for this user
     SELECT COUNT(*)
     INTO exists_count
-    FROM userlists
-    WHERE UserID = curuserID AND GameID = curgameID AND ListName = listName;
+    FROM userlists us
+    WHERE us.UserID = curuserID AND us.GameID = curgameID AND us.ListName = listName;
 
     -- Insert the game into the list only if it's not already added
     IF exists_count = 0 THEN
@@ -207,45 +207,10 @@ BEGIN
         IF curuserID IS NOT NULL and curgameID IS NOT NULL
         THEN 
 			IF EXISTS (SELECT * FROM ratings r WHERE r.UserID = curuserID and r.gameID = curgameID)
-			THEN UPDATE ratings re SET ratings = inputRating WHERE re.UserID = curuserID and re.gameID = curgameID;
+			THEN UPDATE ratings re SET re.rating = inputRating WHERE re.UserID = curuserID and re.gameID = curgameID;
             ELSE INSERT INTO ratings (UserID, GameID, rating) VALUES (curuserID, curgameID, inputRating);
             END IF;
-        END IF;
-    END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `add_rating` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `add_rating`(IN inputUsername VARCHAR(255), IN gameName VARCHAR(255), IN inputRating VARCHAR(255))
-BEGIN
-		DECLARE curuserID, curgameID INT;
-		SELECT u.UserID
-        INTO curuserID
-        FROM users u
-        WHERE u.Username = userName;
-        
-        SELECT g.GameID
-        INTO curgameID
-        FROM games g
-        WHERE g.Name = gameName;
-        
-        IF userName IS NOT NULL and gameName IS NOT NULL
-        THEN 
-			IF EXISTS (SELECT * FROM ratings r WHERE r.UserID = curuserID and r.gameID = curgameID)
-			THEN UPDATE ratings re SET ratings = inputRating WHERE re.UserID = curuserID and re.gameID = curgameID;
-            ELSE INSERT INTO ratings (UserID, GameID, rating) VALUES (curuserID, curgameID, inputRating);
-            END IF;
+            UPDATE games g SET g.Rating = (SELECT AVG(r.Rating) FROM ratings r GROUP BY r.GameID HAVING r.GameID = curgameID) WHERE g.GameID = curgameID;
         END IF;
     END ;;
 DELIMITER ;
@@ -389,10 +354,10 @@ BEGIN
     WHERE g.Name = gameName;
     
     -- Delete the game from the user's list
-    DELETE FROM userlists
+    DELETE FROM userlists us
     WHERE UserID = curuserID
     AND GameID = curgameID
-    AND ListName = listName;
+    AND us.ListName = listName;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -520,4 +485,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-26 15:15:48
+-- Dump completed on 2024-05-26 17:30:33

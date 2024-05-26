@@ -20,4 +20,7 @@ public interface UserListRepository extends JpaRepository<GameList, Integer> {
     @Query(value = "CALL getuserlist(:username);", nativeQuery = true)
     public List<GameList> getUserList(@Param("username")String username);
 
+    @Procedure(name = "removegamefromlist")
+    public void removeGameFromList(String username, String gamename, String listname);
+
 }

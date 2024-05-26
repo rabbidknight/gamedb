@@ -38,9 +38,10 @@ public class GameServiceImpl implements GameService {
         return gameRepository.gamesByGOTY();
     }
 
+
     @Override
-    public List<Game> get3GamesByHighRate() {
-        return gameRepository.gamesByHighRate();
+    public List<Game> get3GamesByHighRate(String username) {
+        return gameRepository.gamesByHighRate(username);
     }
 
 }

@@ -22,9 +22,11 @@ public interface GameRepository extends JpaRepository<Game, Integer>{
     @Query(value = "CALL searchGameOne(:gameName);", nativeQuery = true)
     public Game searchGameOne(@Param("gameName")String gameName);
 
-    @Query(value = "SELECT * FROM viewtop20gamesorderedbyname;", nativeQuery = true)
-    public List<Game> gamesByHighRate();
+    
     @Query(value = "SELECT * FROM getrandomgotygames;", nativeQuery = true)
     public List<Game> gamesByGOTY();
+
+    @Query(value = "CALL GetRandomHighRatedGames(:userName);", nativeQuery = true)
+    public List<Game> gamesByHighRate(@Param("userName")String userName);
 }
 

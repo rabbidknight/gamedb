@@ -10,5 +10,5 @@ public interface GameService {
     public Game getOneGame(String gameName);
     public List<Game> getGameFromSearch(String gameName);
     public List<Game> get5GamesByGOTY();
-    public List<Game> get3GamesByHighRate();
+    public List<Game> get3GamesByHighRate(String username);
 }

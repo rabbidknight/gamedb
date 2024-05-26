@@ -18,6 +18,11 @@ import useToken from '../variables/Token'
     // String içindeki tüm tireleri boşluklarla değiştir
     return str.replace(/-/g, ' ');
 }
+
+  const splitStringToArray = (str) => {
+    return str.split(',').map(item => item.trim());
+  };
+
   const { token, setToken } = useToken();
   const gameName = replaceDashesWithSpaces(name);
   const [game, setGame] = useState([]);
@@ -26,8 +31,14 @@ import useToken from '../variables/Token'
       const result = await axios.post("http://localhost:8080/api/game/main/gameone", {
         gameName: gameName
       });
+      console.log(result.data);
       setGame(result.data);
+      setConsolesArray(splitStringToArray(result.data.consoleName));
+      setGenresArray(splitStringToArray(result.data.genres));
   };
+
+  const [consolesArray, setConsolesArray] = useState([]);
+  const [genresArray, setGenresArray] = useState([]);
 
   useEffect(() => {
     hideSuccessMessage();
@@ -65,6 +76,7 @@ import useToken from '../variables/Token'
     var successMessage = document.getElementById('successMessage');
     successMessage.style.display = 'none';
   }
+    
 
   if (!game) {
     return null; // Yönlendirme gerçekleştiği için render edilmesine gerek yok
@@ -110,17 +122,43 @@ import useToken from '../variables/Token'
     </div>
 
     <div className='Main'>
-    <div style={{textAlign:"center"}}>
-      <h1>{game.name}</h1>
-      <img src={game.imageUrl} alt={game.name} />
-      <h2>Console: {game.consoleName}</h2>
-      <h2>Release Year: {game.releaseYear}</h2>
-      <h2>Developer: {game.developerName}</h2>
-      <h2>Genres: {game.genres}</h2>
-      <button className='MainButton1' onClick={(e) => addToList()} style={{width:"160px"}}> Add to list</button>
-      <span id="successMessage" style={{fontSize:"20px", display:"none", color:"lightgreen", marginTop:"5px"}}>Successfully added</span>
-      
-    </div>
+      <div className="game-info">
+        <div className='TopDiv'>
+          <img src={game.imageUrl} alt={game.name} />
+            <div className='MainInfo'>
+              <h1 className="game-title" >{game.name}</h1>
+              <p className="game-release-year">Release Year: {game.releaseYear}</p>
+              <p className="game-description">{game.description}</p>
+            </div>
+        </div>
+            <div className="game-details">
+                <div className="game-section">
+                <h2>Consoles</h2>
+                    <ul>
+                        {consolesArray.map((console, index) => (
+                            <li key={index}>{console}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="game-section">
+                    <h2>Genres</h2>
+                    <ul>
+                        {genresArray.map((genre, index) => (
+                            <li key={index}>{genre}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="game-section">
+                    <h2>Developer</h2>
+                    <ul>
+                    <li>{game.developerName}</li>
+                    </ul>
+                </div>
+                {token ? (
+                <button className='MainButton1' onClick={(e) => addToList()} style={{width:"160px"}}> Add to list</button>):(<></>)}
+                <span id="successMessage" style={{fontSize:"20px", display:"none", color:"lightgreen", marginTop:"5px"}}>Successfully added</span>
+            </div>
+        </div>
 
     </div>
     </>

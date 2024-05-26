@@ -396,3 +396,74 @@
     opacity: 1;
     visibility: visible;
   }
+
+  .game-info {
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 120px;
+    background-color: rgba(34, 37, 36, 0.55);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 2px solid black;
+}
+
+.TopDiv {
+  display: inline-flex;
+}
+
+.MainInfo {
+  display: inline-block;
+  width: 500px;
+  margin-left: 20px;
+}
+
+.game-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.game-release-year {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.game-description {
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.game-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.game-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.game-section h2{
+  margin-left: 7px;
+}
+
+.game-section h2 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.game-section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.game-section ul li {
+    border: 1px solid black;
+    background-color: #535353;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}

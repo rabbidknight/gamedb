@@ -35,7 +35,7 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 0px 8px #ddd;
+    box-shadow: 0px 0px 8px #00000057;
     border-radius: 10px;
     max-height: 400px;
     overflow-y: scroll;
@@ -45,6 +45,7 @@
   .search-result {
     padding: 10px 20px;
     border-radius: 10px;
+    transition: all 0.3s ease 0s;
   }
   
   .search-result:hover {

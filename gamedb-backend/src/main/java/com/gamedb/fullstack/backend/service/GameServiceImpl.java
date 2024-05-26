@@ -15,7 +15,6 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public List<Game> getAllGames() {
-        // TODO Auto-generated method stub
         return gameRepository.findAll();
     }
 
@@ -32,6 +31,16 @@ public class GameServiceImpl implements GameService {
     @Override
     public List<Game> getGameFromSearch(String gameName) {
         return gameRepository.searchGame(gameName);
+    }
+
+    @Override
+    public List<Game> get5GamesByGOTY() {
+        return gameRepository.gamesByGOTY();
+    }
+
+    @Override
+    public List<Game> get3GamesByHighRate() {
+        return gameRepository.gamesByHighRate();
     }
 
 }

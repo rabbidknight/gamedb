@@ -25,6 +25,14 @@ public class GameController {
     public List<Game> getGameByNameOrder() {
         return gameService.get20GamesByNameOrder();
     }
+    @GetMapping("/main/goty")
+    public List<Game> getGameByGOTY() {
+        return gameService.get5GamesByGOTY();
+    }
+    @GetMapping("/main/highrate")
+    public List<Game> getGameByHighRate() {
+        return gameService.get3GamesByHighRate();
+    }
     @PostMapping("/main/gameone")
     public Game getOneGame(@RequestBody GameRequest gameName) {
         return gameService.getOneGame(gameName.getGameName());

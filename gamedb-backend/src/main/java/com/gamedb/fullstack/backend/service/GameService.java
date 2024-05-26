@@ -9,4 +9,6 @@ public interface GameService {
     public List<Game> get20GamesByNameOrder();
     public Game getOneGame(String gameName);
     public List<Game> getGameFromSearch(String gameName);
+    public List<Game> get5GamesByGOTY();
+    public List<Game> get3GamesByHighRate();
 }

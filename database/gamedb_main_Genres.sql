@@ -26,7 +26,7 @@ CREATE TABLE `genres` (
   `GenreID` int NOT NULL AUTO_INCREMENT,
   `Name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`GenreID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `genres` (
 
 LOCK TABLES `genres` WRITE;
 /*!40000 ALTER TABLE `genres` DISABLE KEYS */;
-INSERT INTO `genres` VALUES (1,'Multiplayer'),(2,'Action'),(3,'Platformer'),(4,'RPG'),(5,'Tactical'),(6,'Adventure'),(7,'Puzzle'),(8,'RTS'),(9,'Simulation');
+INSERT INTO `genres` VALUES (1,'Multiplayer'),(2,'Action'),(3,'Platformer'),(4,'RPG'),(5,'Tactical'),(6,'Adventure'),(7,'Puzzle'),(8,'RTS'),(9,'Simulation'),(10,'Open-World'),(11,'FPS'),(12,'Survival-Horror');
 /*!40000 ALTER TABLE `genres` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-24 23:13:59
+-- Dump completed on 2024-05-26 13:11:58

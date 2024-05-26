@@ -2,8 +2,8 @@ import React, { useEffect, useState} from 'react';
 import './Home.css';
 import { Link, useNavigate } from 'react-router-dom';
 import backgroundImg from "../background.jpg"
-import List from '../components/List';
-import "../components/List.css"
+import CarouselList from '../components/CarouselList';
+import "../components/CarouselList.css"
 import useToken from '../variables/Token'
 import SearchBar from '../components/SearchBar/SearchBar';
 import SearchResultsList from '../components/SearchBar/SearchResultsList';
@@ -95,11 +95,11 @@ axios.get('https://example.com/api/data', {
     
     <div className='Main'>
       <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "30px"}}>
-        Popular Games</h1>
-      <List />
+        Game of the Year Award Winners</h1>
+      <CarouselList get_url={"http://localhost:8080/api/game/main/goty"}/>
       <h1 style={{textAlign: "center", marginTop: "40px", marginBottom: "30px"}}>
         Best Games</h1>
-      <List />
+      <CarouselList get_url={"http://localhost:8080/api/game/main/goty"}/>
 
     </div>
     </>

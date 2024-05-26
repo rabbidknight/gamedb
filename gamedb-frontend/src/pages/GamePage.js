@@ -43,7 +43,6 @@ import useToken from '../variables/Token'
       const result = await axios.post("http://localhost:8080/api/game/main/gameone", {
         gameName: gameName
       });
-      console.log(result.data);
       setGame(result.data);
       setConsolesArray(splitStringToArray(result.data.consoleName));
       setGenresArray(splitStringToArray(result.data.genres));
@@ -74,7 +73,6 @@ import useToken from '../variables/Token'
             Authorization: `Bearer ${token}`
         }
     });
-    console.log(rating)
     const result2 = await axios.post("http://localhost:8080/api/rating/addrating",
     {
       gamename: game.name,

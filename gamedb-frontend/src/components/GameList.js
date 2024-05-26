@@ -24,7 +24,6 @@ export default function GameList() {
         }
     });
     setGames(result.data);
-    console.log(result.data);
     }
 
     const navigateToGame = (name)=> {
@@ -63,7 +62,7 @@ export default function GameList() {
       <tbody>
         {games.map((game, index) => (
           <tr key={index}>
-            <td className='image-cell' style={{textAlign:"center", height:"140px", padding:"5px"}}><img src={game.imageUrl} alt={game.name} style={{width: '95px', height:"135px", cursor:"pointer"}} onClick={() => navigateToGame(game.name)} /></td>
+            <td className='image-cell' style={{textAlign:"center", height:"140px", padding:"5px"}}><img src={game.imageUrl} alt={game.name} style={{width: '95px', maxHeight:"135px", cursor:"pointer"}} onClick={() => navigateToGame(game.name)} /></td>
             <td ><span style={{cursor:"pointer"}} onClick={() => navigateToGame(game.name)}>{game.name}</span></td>
             <td style={{fontSize:"17px"}}>{game.rating}</td>
             <td>{game.consoleName}</td>

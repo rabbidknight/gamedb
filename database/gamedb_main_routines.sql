@@ -16,19 +16,19 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Temporary view structure for view `viewtop20gamesorderedbyname`
+-- Temporary view structure for view `getrandomhighratedgames`
 --
 
-DROP TABLE IF EXISTS `viewtop20gamesorderedbyname`;
-/*!50001 DROP VIEW IF EXISTS `viewtop20gamesorderedbyname`*/;
+DROP TABLE IF EXISTS `getrandomhighratedgames`;
+/*!50001 DROP VIEW IF EXISTS `getrandomhighratedgames`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `viewtop20gamesorderedbyname` AS SELECT 
+/*!50001 CREATE VIEW `getrandomhighratedgames` AS SELECT 
  1 AS `GameID`,
  1 AS `Name`,
- 1 AS `ConsoleName`,
  1 AS `ReleaseYear`,
  1 AS `DeveloperName`,
+ 1 AS `ConsoleName`,
  1 AS `Genres`,
  1 AS `ImageURL`,
  1 AS `Rating`,
@@ -56,19 +56,19 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary view structure for view `getrandomhighratedgames`
+-- Temporary view structure for view `viewtop20gamesorderedbyname`
 --
 
-DROP TABLE IF EXISTS `getrandomhighratedgames`;
-/*!50001 DROP VIEW IF EXISTS `getrandomhighratedgames`*/;
+DROP TABLE IF EXISTS `viewtop20gamesorderedbyname`;
+/*!50001 DROP VIEW IF EXISTS `viewtop20gamesorderedbyname`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `getrandomhighratedgames` AS SELECT 
+/*!50001 CREATE VIEW `viewtop20gamesorderedbyname` AS SELECT 
  1 AS `GameID`,
  1 AS `Name`,
+ 1 AS `ConsoleName`,
  1 AS `ReleaseYear`,
  1 AS `DeveloperName`,
- 1 AS `ConsoleName`,
  1 AS `Genres`,
  1 AS `ImageURL`,
  1 AS `Rating`,
@@ -76,10 +76,10 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = @saved_cs_client;
 
 --
--- Final view structure for view `viewtop20gamesorderedbyname`
+-- Final view structure for view `getrandomhighratedgames`
 --
 
-/*!50001 DROP VIEW IF EXISTS `viewtop20gamesorderedbyname`*/;
+/*!50001 DROP VIEW IF EXISTS `getrandomhighratedgames`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -88,7 +88,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `viewtop20gamesorderedbyname` AS select `g`.`GameID` AS `GameID`,`g`.`Name` AS `Name`,group_concat(distinct `c`.`Name` order by `c`.`Name` ASC separator ', ') AS `ConsoleName`,`g`.`ReleaseYear` AS `ReleaseYear`,`d`.`Name` AS `DeveloperName`,(select group_concat(distinct `ge`.`Name` order by `ge`.`Name` ASC separator ', ') from (`game_genres` `gg` join `genres` `ge` on((`gg`.`GenreID` = `ge`.`GenreID`))) where (`gg`.`GameID` = `g`.`GameID`)) AS `Genres`,`g`.`Image` AS `ImageURL`,`g`.`Rating` AS `Rating`,`g`.`Description` AS `Description` from (((`games` `g` join `developers` `d` on((`d`.`DeveloperID` = `g`.`DeveloperID`))) join `gameplatforms` `gp` on((`gp`.`GameID` = `g`.`GameID`))) join `consoles` `c` on((`c`.`ConsoleID` = `gp`.`ConsoleID`))) group by `g`.`GameID` order by `g`.`Name` limit 20 */;
+/*!50001 VIEW `getrandomhighratedgames` AS select `g`.`GameID` AS `GameID`,`g`.`Name` AS `Name`,`g`.`ReleaseYear` AS `ReleaseYear`,`d`.`Name` AS `DeveloperName`,(select group_concat(`c`.`Name` separator ', ') from (`gameplatforms` `gp` join `consoles` `c` on((`gp`.`ConsoleID` = `c`.`ConsoleID`))) where (`gp`.`GameID` = `g`.`GameID`)) AS `ConsoleName`,(select group_concat(`ge`.`Name` separator ', ') from (`game_genres` `gg` join `genres` `ge` on((`gg`.`GenreID` = `ge`.`GenreID`))) where (`gg`.`GameID` = `g`.`GameID`)) AS `Genres`,`g`.`Image` AS `ImageURL`,`g`.`Rating` AS `Rating`,`g`.`Description` AS `Description` from (`games` `g` join `developers` `d` on((`d`.`DeveloperID` = `g`.`DeveloperID`))) where (`g`.`Rating` > 5) order by `g`.`Rating` desc limit 5 */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -112,10 +112,10 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Final view structure for view `getrandomhighratedgames`
+-- Final view structure for view `viewtop20gamesorderedbyname`
 --
 
-/*!50001 DROP VIEW IF EXISTS `getrandomhighratedgames`*/;
+/*!50001 DROP VIEW IF EXISTS `viewtop20gamesorderedbyname`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -124,7 +124,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `getrandomhighratedgames` AS select `g`.`GameID` AS `GameID`,`g`.`Name` AS `Name`,`g`.`ReleaseYear` AS `ReleaseYear`,`d`.`Name` AS `DeveloperName`,(select group_concat(`c`.`Name` separator ', ') from (`gameplatforms` `gp` join `consoles` `c` on((`gp`.`ConsoleID` = `c`.`ConsoleID`))) where (`gp`.`GameID` = `g`.`GameID`)) AS `ConsoleName`,(select group_concat(`ge`.`Name` separator ', ') from (`game_genres` `gg` join `genres` `ge` on((`gg`.`GenreID` = `ge`.`GenreID`))) where (`gg`.`GameID` = `g`.`GameID`)) AS `Genres`,`g`.`Image` AS `ImageURL`,`g`.`Rating` AS `Rating`,`g`.`Description` AS `Description` from (`games` `g` join `developers` `d` on((`d`.`DeveloperID` = `g`.`DeveloperID`))) where (`g`.`Rating` > 5) order by `g`.`Rating` desc limit 5 */;
+/*!50001 VIEW `viewtop20gamesorderedbyname` AS select `g`.`GameID` AS `GameID`,`g`.`Name` AS `Name`,group_concat(distinct `c`.`Name` order by `c`.`Name` ASC separator ', ') AS `ConsoleName`,`g`.`ReleaseYear` AS `ReleaseYear`,`d`.`Name` AS `DeveloperName`,(select group_concat(distinct `ge`.`Name` order by `ge`.`Name` ASC separator ', ') from (`game_genres` `gg` join `genres` `ge` on((`gg`.`GenreID` = `ge`.`GenreID`))) where (`gg`.`GameID` = `g`.`GameID`)) AS `Genres`,`g`.`Image` AS `ImageURL`,`g`.`Rating` AS `Rating`,`g`.`Description` AS `Description` from (((`games` `g` join `developers` `d` on((`d`.`DeveloperID` = `g`.`DeveloperID`))) join `gameplatforms` `gp` on((`gp`.`GameID` = `g`.`GameID`))) join `consoles` `c` on((`c`.`ConsoleID` = `gp`.`ConsoleID`))) group by `g`.`GameID` order by `g`.`Name` limit 20 */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -281,12 +281,15 @@ BEGIN
         (`gamedb_main`.`games` `g`
         JOIN `gamedb_main`.`developers` `d` ON ((`d`.`DeveloperID` = `g`.`DeveloperID`)))
     WHERE
-        (`g`.`Rating` > 5) AND g.GameID IN (SELECT DISTINCT g1.GameID
+        (`g`.`Rating` > 5) AND g.GameID IN (SELECT DISTINCT g1.GameID 
+									FROM games g1
+                                    INNER JOIN game_genres gg2 ON gg2.GameID = g1.GameID
+									WHERE gg2.GenreID IN (SELECT DISTINCT gg1.GenreID
 									FROM game_genres gg1
 									JOIN userlists ul ON ul.GameID = gg1.GameID
                                     JOIN users us ON ul.UserID = us.UserID
-									JOIN games g1 ON g1.GameID = gg1.GameID
 									WHERE us.Username = username)
+                                    )
     ORDER BY RAND()
     LIMIT 5;
 
@@ -618,4 +621,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-27  2:25:12
+-- Dump completed on 2024-05-27  2:36:21

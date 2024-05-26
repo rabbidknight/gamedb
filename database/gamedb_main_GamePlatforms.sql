@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.36, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: gamedb_main
+-- Host: localhost    Database: gamedb_main
 -- ------------------------------------------------------
 -- Server version	8.3.0
 
@@ -16,30 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `GamePlatforms`
+-- Table structure for table `gameplatforms`
 --
 
-DROP TABLE IF EXISTS `GamePlatforms`;
+DROP TABLE IF EXISTS `gameplatforms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `GamePlatforms` (
+CREATE TABLE `gameplatforms` (
   `GameID` int NOT NULL,
   `ConsoleID` int NOT NULL,
   PRIMARY KEY (`GameID`,`ConsoleID`),
   KEY `ConsoleID` (`ConsoleID`),
-  CONSTRAINT `gameplatforms_ibfk_1` FOREIGN KEY (`GameID`) REFERENCES `Games` (`GameID`),
-  CONSTRAINT `gameplatforms_ibfk_2` FOREIGN KEY (`ConsoleID`) REFERENCES `Consoles` (`ConsoleID`)
+  CONSTRAINT `gameplatforms_ibfk_1` FOREIGN KEY (`GameID`) REFERENCES `games` (`GameID`),
+  CONSTRAINT `gameplatforms_ibfk_2` FOREIGN KEY (`ConsoleID`) REFERENCES `consoles` (`ConsoleID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `GamePlatforms`
+-- Dumping data for table `gameplatforms`
 --
 
-LOCK TABLES `GamePlatforms` WRITE;
-/*!40000 ALTER TABLE `GamePlatforms` DISABLE KEYS */;
-INSERT INTO `GamePlatforms` VALUES (1,1),(2,2),(3,2),(4,3),(5,4),(6,5),(8,5),(9,5),(11,5),(12,5),(13,5),(14,5),(16,5),(8,6),(9,6),(10,6),(11,6),(12,6),(13,6),(14,6),(15,6),(13,7),(15,7),(16,7),(9,8),(11,8),(12,8),(13,8),(14,8),(15,8),(7,9),(11,9),(13,9),(14,9);
-/*!40000 ALTER TABLE `GamePlatforms` ENABLE KEYS */;
+LOCK TABLES `gameplatforms` WRITE;
+/*!40000 ALTER TABLE `gameplatforms` DISABLE KEYS */;
+INSERT INTO `gameplatforms` VALUES (1,1),(2,2),(3,2),(4,3),(5,4),(6,5),(8,5),(9,5),(11,5),(12,5),(13,5),(14,5),(16,5),(8,6),(9,6),(10,6),(11,6),(12,6),(13,6),(14,6),(15,6),(13,7),(15,7),(16,7),(9,8),(11,8),(12,8),(13,8),(14,8),(15,8),(7,9),(11,9),(13,9),(14,9);
+/*!40000 ALTER TABLE `gameplatforms` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-26 13:11:58
+-- Dump completed on 2024-05-26 15:15:46

@@ -30,4 +30,9 @@ public class Game {
     private String genres;
     @Column(name = "Imageurl")
     private String imageUrl;
+    @Column(name = "Rating")
+    private double rating;
+    @Column(name = "Description")
+    private String description;
+
 }

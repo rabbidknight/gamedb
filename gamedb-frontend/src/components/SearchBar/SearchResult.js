@@ -14,16 +14,12 @@ const SearchResult = ({ result }) => {
 
   function navigateToGame() {
     navigate(`/game/${replaceSpaceWithDash(result[1])}`)
-    /*setTimeout(function() {
-        window.location.reload();
-    }, 10);*/
 }
 
   return (
     <>
     <div style={{display: "inline-flex", height:"90px", padding:"5px"}}
       className="search-result"
-      //onClick={(e) => alert(`You selected ${result}!`)
       onClick={(e) => navigateToGame()}
     >
       <img src={result[0]} style={{height: "100%", marginRight:"10px", minWidth:"62px"}}/>

@@ -47,7 +47,7 @@ export default function InputForm() {
     var errorMessage = document.getElementById('errorMessage');
     errorMessage.style.display = 'block';
     var form = document.getElementById('form');
-    form.style.height = '375px';
+    form.style.height = '383px';
 }
 
   return (
@@ -56,7 +56,7 @@ export default function InputForm() {
         <div id='form' className='InnerFormDiv'>
           <div style={{textAlign: "center", fontSize: "24px"}}>
             <span>Sign Up</span>
-            <br></br><span id="errorMessage" style={{color: "rgb(212, 33, 78)", fontWeight: "bold", fontSize: "15px", display: "none", marginTop: "10px" }}>Something went wrong</span>
+            <br></br><span id="errorMessage" style={{color: "rgb(212, 33, 78)", fontWeight: "bold", fontSize: "15px", display: "none", marginTop: "10px" }}>Username or Email already exists</span>
             <hr></hr>
             </div>
           <div className="form__group">

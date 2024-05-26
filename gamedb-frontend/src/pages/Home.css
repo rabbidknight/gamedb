@@ -93,6 +93,7 @@
     max-width: 160px;
     margin-top: 30px;
     margin-bottom: 30px;
+    margin-left: 8px;
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 12px;
@@ -112,12 +113,12 @@
   }
 
   .CancelButton {
-    margin-left: 10px;
     width: 12%;
     min-width: 120px;
     max-width: 160px;
     margin-top: 30px;
     margin-bottom: 30px;
+    margin-right: 8px;
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 12px;
@@ -180,7 +181,7 @@
   .InnerFormDiv {
     margin: auto;
     width: 270px;
-    height: 350px;
+    height: 352px;
     padding-top: 10px;
     border: 2px solid;
     border-color: #000;

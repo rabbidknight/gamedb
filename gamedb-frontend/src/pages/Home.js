@@ -11,37 +11,6 @@ import UsernamePart from '../components/UsernamePart';
 
 
 export default function Home() {
-/*
-  const [Games, setGames] = useState();
-
-  const getGames = async()=> {
-    try {
-      const response = await api.get("/463");
-      console.log(response.data);
-      setGames(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  useEffect(() => {
-    getGames();
-  },[])
-*/
-
-/*
-axios.get('https://example.com/api/data', {
-  headers: {
-    Authorization: `Bearer ${token}` // Bearer token'i Authorization başlığında gönder
-  }
-})
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-*/
   
   const navigate = useNavigate();
   const { token, setToken } = useToken();
@@ -50,7 +19,6 @@ axios.get('https://example.com/api/data', {
   useEffect(()=> {  // when page is loading this is executed
     navigate("/");
     },[]);
-    console.log(token);
   return (
     <>
     <div  className = "Navbar">
@@ -68,10 +36,7 @@ axios.get('https://example.com/api/data', {
               My List
             </button>
           </Link>
-          
           <UsernamePart />
-          
-        
         </>
       ) : (// Token yoksa
         <>
@@ -94,12 +59,22 @@ axios.get('https://example.com/api/data', {
     
     
     <div className='Main'>
-      <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "30px"}}>
-        Game of the Year Award Winners</h1>
+      <h1 style={{textAlign: "center", marginTop: "20px", marginBottom: "30px"}}>Game of the Year Award Winners</h1>
       <CarouselList get_url={"http://localhost:8080/api/game/main/goty"}/>
-      <h1 style={{textAlign: "center", marginTop: "40px", marginBottom: "30px"}}>
-        Best Games</h1>
-      <CarouselList get_url={"http://localhost:8080/api/game/main/goty"}/>
+
+      {token ? ( // Token varsa
+        <>
+          <h1 style={{textAlign: "center", marginTop: "40px", marginBottom: "30px"}}>Recommended Games for You</h1>
+          <CarouselList get_url={"http://localhost:8080/api/game/recommendation"}/>
+        
+        </>
+      ) : ( // Token yoksa
+        <>
+          <h1 style={{textAlign: "center", marginTop: "40px", marginBottom: "30px"}}>Top Games</h1>
+          <CarouselList get_url={"http://localhost:8080/api/game/main/highrate"}/>
+        </>
+      )}
+
 
     </div>
     </>

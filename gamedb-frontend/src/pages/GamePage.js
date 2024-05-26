@@ -23,6 +23,18 @@ import useToken from '../variables/Token'
     return str.split(',').map(item => item.trim());
   };
 
+  const [rating, setRating] = useState('');
+
+  const handleRatingChange = (e) => {
+    let value = e.target.value;
+
+    // Only allow empty input, or valid numbers between 0 and 10 with up to one decimal place
+    if (value === '' || (value.match(/^(\d{1,2})(\.\d?)?$/) && parseFloat(value) <= 10)) {
+      setRating(value);
+    }
+  };
+
+
   const { token, setToken } = useToken();
   const gameName = replaceDashesWithSpaces(name);
   const [game, setGame] = useState([]);
@@ -50,7 +62,8 @@ import useToken from '../variables/Token'
     }
   }, [name]);
 
-  const addToList = async()=> {
+  const addToList = async(e)=> {
+    e.preventDefault();
     const result = await axios.post("http://localhost:8080/api/userlist/addtolist",
     {
       gamename: game.name,
@@ -61,7 +74,18 @@ import useToken from '../variables/Token'
             Authorization: `Bearer ${token}`
         }
     });
-
+    console.log(rating)
+    const result2 = await axios.post("http://localhost:8080/api/rating/addrating",
+    {
+      gamename: game.name,
+      rating: rating
+    },
+    {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    });
+    
     if (result.data == "Successfull!") {
       showSuccessMessage();
     }
@@ -124,11 +148,27 @@ import useToken from '../variables/Token'
     <div className='Main'>
       <div className="game-info">
         <div className='TopDiv'>
-          <img src={game.imageUrl} alt={game.name} />
+          <div>
+          <img src={game.imageUrl} alt={game.name} style={{}}/>
+          </div>
             <div className='MainInfo'>
+              <div style={{display:"inline-flex"}}>
               <h1 className="game-title" >{game.name}</h1>
+              <h1 className="game-title" style={{marginLeft:"auto", marginRight:"20px", marginTop:"25px", fontSize:"28px"}}>Rate: {game.rating}/10</h1>
+              </div>
               <p className="game-release-year">Release Year: {game.releaseYear}</p>
               <p className="game-description">{game.description}</p>
+              {token ? (
+              <div>
+                <form onSubmit={(e)=>addToList(e)}>
+                  <button type='submit' className='AddToListButton'>Add to list</button>
+                  <input type="text" className="RatingInput" required placeholder="Rate (0-10)"value={rating} onChange={handleRatingChange}/>
+                </form>
+              </div>
+      ) : (
+        <></>
+      )}
+                <span id="successMessage" style={{fontSize:"20px", display:"none", color:"lightgreen", marginTop:"10px"}}>Successfully added</span>
             </div>
         </div>
             <div className="game-details">
@@ -154,9 +194,6 @@ import useToken from '../variables/Token'
                     <li>{game.developerName}</li>
                     </ul>
                 </div>
-                {token ? (
-                <button className='MainButton1' onClick={(e) => addToList()} style={{width:"160px"}}> Add to list</button>):(<></>)}
-                <span id="successMessage" style={{fontSize:"20px", display:"none", color:"lightgreen", marginTop:"5px"}}>Successfully added</span>
             </div>
         </div>
 

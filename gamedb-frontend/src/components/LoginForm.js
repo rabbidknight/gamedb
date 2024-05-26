@@ -23,6 +23,10 @@ export default function InputForm() {
     setUser({...user,[e.target.name]:e.target.value})
   }
 
+  const handleCancel = () => {
+    navigate('/');
+  };
+
   const onLogin = async (e)=> {
    e.preventDefault();
    try {
@@ -54,7 +58,7 @@ export default function InputForm() {
             </div>
             
             <div className="form__group">
-            <input type="input" className="form__field" placeholder="username" required
+            <input type="text" className="form__field" placeholder="username" required
             name = "username" value={username} onChange={(e)=>onInputChange(e)}/>
             <label className="form__label">Username</label>
             </div>
@@ -72,12 +76,13 @@ export default function InputForm() {
       </div>
       
       <div className = "ButtonDiv">
+      <button type='button' className = "CancelButton" onClick={handleCancel}>
+        Cancel
+      </button>
+
       <input type='submit' className='SubmitButton' 
       value="Login"></input>
 
-      <Link to="/"><button className = "CancelButton">
-        Cancel
-      </button></Link>
       </div>
     </form>
 

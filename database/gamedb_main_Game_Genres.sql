@@ -38,7 +38,7 @@ CREATE TABLE `game_genres` (
 
 LOCK TABLES `game_genres` WRITE;
 /*!40000 ALTER TABLE `game_genres` DISABLE KEYS */;
-INSERT INTO `game_genres` VALUES (1,1),(1,2),(2,2),(4,2),(2,3),(3,4),(3,5),(4,6),(5,7),(6,8),(6,9);
+INSERT INTO `game_genres` VALUES (1,1),(14,1),(1,2),(2,2),(4,2),(7,2),(8,2),(9,2),(10,2),(2,3),(3,4),(12,4),(13,4),(15,4),(16,4),(3,5),(4,6),(7,6),(8,6),(9,6),(10,6),(11,6),(12,6),(13,6),(15,6),(5,7),(11,7),(6,8),(16,8),(6,9),(7,10),(13,10),(15,10),(14,11),(10,12);
 /*!40000 ALTER TABLE `game_genres` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-25 21:17:13
+-- Dump completed on 2024-05-26 13:11:58

@@ -31,11 +31,16 @@ public class GameController {
     public List<Game> getGameByGOTY() {
         return gameService.get5GamesByGOTY();
     }
-    @GetMapping("/highrate")
-    public List<Game> getGameByHighRate() {
+    @GetMapping("/recommendation")
+    public List<Game> getRecommendationUser() {
         var username = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return gameService.get3GamesByHighRate(username.getUsername());
+        return gameService.getGamesByRecommendation(username.getUsername());
     }
+    @GetMapping("/main/highrate")
+    public List<Game> getGameByHighRate() {
+        return gameService.get5GamesByHighRate();
+    }
+
     @PostMapping("/main/gameone")
     public Game getOneGame(@RequestBody GameRequest gameName) {
         return gameService.getOneGame(gameName.getGameName());

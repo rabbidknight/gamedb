@@ -26,7 +26,10 @@ public interface GameRepository extends JpaRepository<Game, Integer>{
     @Query(value = "SELECT * FROM getrandomgotygames;", nativeQuery = true)
     public List<Game> gamesByGOTY();
 
-    @Query(value = "CALL GetRandomHighRatedGames(:userName);", nativeQuery = true)
-    public List<Game> gamesByHighRate(@Param("userName")String userName);
+    @Query(value = "CALL GetGamesByRecommendation(:userName);", nativeQuery = true)
+    public List<Game> gamesByRecommendation(@Param("userName")String userName);
+
+    @Query(value = "SELECT * FROM getrandomhighratedgames;", nativeQuery = true)
+    public List<Game> games5ByHighRate();
 }
 

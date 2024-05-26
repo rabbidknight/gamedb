@@ -40,8 +40,13 @@ public class GameServiceImpl implements GameService {
 
 
     @Override
-    public List<Game> get3GamesByHighRate(String username) {
-        return gameRepository.gamesByHighRate(username);
+    public List<Game> getGamesByRecommendation(String username) {
+        return gameRepository.gamesByRecommendation(username);
+    }
+
+    @Override
+    public List<Game> get5GamesByHighRate() {
+        return gameRepository.games5ByHighRate();
     }
 
 }

@@ -30,6 +30,7 @@ import useToken from '../variables/Token'
   };
 
   useEffect(() => {
+    hideSuccessMessage();
     loadGame();
     setResults([]);
     if (!game) {
@@ -58,6 +59,11 @@ import useToken from '../variables/Token'
   function showSuccessMessage() {
     var successMessage = document.getElementById('successMessage');
     successMessage.style.display = 'block';
+  }
+
+  function hideSuccessMessage() {
+    var successMessage = document.getElementById('successMessage');
+    successMessage.style.display = 'none';
   }
 
   if (!game) {

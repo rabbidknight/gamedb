@@ -50,7 +50,7 @@ export default function GameList() {
     <table className='GameTable'>
       <thead>
         <tr>
-          <th>Photo</th>
+          <th style={{width:"84px"}}>Photo</th>
           <th>Name</th>
           <th>Console</th>
           <th>Release Year</th>
@@ -61,7 +61,7 @@ export default function GameList() {
       <tbody>
         {games.map((game, index) => (
           <tr key={index}>
-            <td className='image-cell' style={{textAlign:"center", width:"100px", height:"130px"}}><img src={game.imageUrl} alt={game.name} style={{width: '100px', height:"130px"}} /></td>
+            <td className='image-cell' style={{textAlign:"center", width:"95px", height:"130px"}}><img src={game.imageUrl} alt={game.name} style={{width: '95px', height:"125px", paddingLeft:"5px"}} /></td>
             <td>{game.name}</td>
             <td>{game.consoleName}</td>
             <td>{game.releaseYear}</td>
